@@ -13,13 +13,12 @@ RSpec.describe Etiqueta do
                 it "Espectativa de que existe un constructor" do
 			prueba = InfoNutricional.new("Galletas integrales", 20, 12.6, 1.2, 9.9, 1.5, 70.0, 21.0, 0.0, 0.0, 7.5, 7.3, 0.003)
                 end
+		before :each do
+			@etiqueta = InfoNutricional.new("Galletas integrales", 20, 12.6, 1.2, 9.9, 1.5, 70.0, 21.0, 0.0, 0.0, 7.5, 7.3, 0.003)
+		end	
+		it "Espectativa de que el nombre no es nulo" do
+			expect(@etiqueta.nombre).not_to be nil
+		end
   end
 end
 
-#RSpec.describe InfoNutricional do
-#	context "# Probando el constructor" do
-#		it "Espectativa de que existe un constructor" do
-#			prueba = InfoNutricional.new("Galletas integrales", 20, 12.6, 1.2, 9.9, 1.5, 70.0, 21.0, 7.5, 7.3, 0.003)
-#		end
-#	end
-#end
