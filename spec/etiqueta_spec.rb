@@ -106,6 +106,9 @@ RSpec.describe Etiqueta do
 	end
 	it "Método ingesta recomendada de proteinas" do
 		expect(@etiqueta.ir_proteina).to eq(2.92)
+	end
+	it "Método ingesta recomendada de sal" do
+		expect(@etiqueta.ir_sal).to eq(0.01)
 	end	
   end
 end
