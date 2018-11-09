@@ -85,7 +85,7 @@ RSpec.describe Etiqueta do
 	     ["Proteina","7.3g","1.46g","2.92%"], 
 	     ["Sal","0.003g","0.0006g","0.01%"]]
 		tabla = Terminal::Table.new :title => "Galletas integrales", :headings => ['', 'Cantidad por 100g', "Cantidad por porción (20g)", "IR (por porción de 20g de producto)"], :rows => filas
-		expect("#{@etiqueta.to_s}").to eq("#{tabla}")
+		expect(@etiqueta.to_s).to eq("#{tabla}")
 	  end
   end
   context "# Ingesta recomendada (IR)" do

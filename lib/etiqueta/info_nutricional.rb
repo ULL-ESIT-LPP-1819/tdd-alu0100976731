@@ -45,5 +45,6 @@ class InfoNutricional
 	   ["Proteina","#{@proteina}g","#{@proteina*@porcion/100}g","#{self.ir_proteina}%"], 
 	   ["Sal","#{@sal}g","#{@sal*@porcion/100}g","#{self.ir_sal}%"]]
 tabla = Terminal::Table.new :title => "Galletas integrales", :headings => ['', 'Cantidad por 100g', "Cantidad por porción (20g)", "IR (por porción de #{@porcion}g de producto)"], :rows => filas
+	"#{tabla}"
 	end
 end
