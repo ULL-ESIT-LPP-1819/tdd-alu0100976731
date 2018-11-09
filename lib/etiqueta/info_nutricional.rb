@@ -17,6 +17,10 @@ class InfoNutricional
 		@grasa.to_f*@porcion/70
 	end
 
+	def ir_grasa_saturada
+		@grasa_saturada.to_f*@porcion/20
+	end
+
 	def to_s
 		filas = [["Valor energético","#{(valor_energetico*4.1868).round}kJ/ #{valor_energetico}kcal", "#{(valor_energetico*4.1686*@porcion/100).round}kJ/ #{(valor_energetico*@porcion/100).round}kcal"], 
 	   ["Grasas totales\n -Saturadas\n -Monoinsaturada\n -Poliinsaturada", "#{@grasa}g\n#{@grasa_saturada}g\n#{@grasa_monoinsaturada}g\n#{@grasa_poliinsaturada}g", "#{@grasa*@porcion/100}g\n#{@grasa_saturada*@porcion/100}g\n#{@grasa_monoinsaturada*@porcion/100}g\n#{@grasa_poliinsaturada*@porcion/100}g"], 
