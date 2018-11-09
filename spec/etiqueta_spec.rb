@@ -78,13 +78,13 @@ RSpec.describe Etiqueta do
   end
   context "# Métodos para mostrar por pantalla" do
 	  it "Espectativa para método to_s, tabla formateada" do
-		  filas = [["Valor energético","1834kJ/ 438kcal", "365kJ/ 87kcal"], 
-	     ["Grasas totales\n -Saturadas\n -Monoinsaturada\n -Poliinsaturada", "12.6g\n1.2g\n9.9g\n1.5g", "2.52g\n0.24g\n1.98g\n0.3g"], 
-	     ["Hidratos de carbono\n -Azúcares\n -Polialcoholes\n -Almidón","70.0g\n21.0g\n0.0g\n0.0g","14.0g\n4.2g\n0.0g\n0.0g"], 
-	     ["Fibra","7.5g","1.5g"], 
-	     ["Proteina","7.3g","1.46g"], 
-	     ["Sal","0.003g","0.0006g"]]
-		tabla = Terminal::Table.new :title => "Galletas integrales", :headings => ['', 'Cantidad por 100g', "Cantidad por porción (20g)"], :rows => filas
+		  filas = [["Valor energético","1834kJ/ 438kcal", "365kJ/ 87kcal","4.38%"], 
+	     ["Grasas totales\n -Saturadas\n -Monoinsaturada\n -Poliinsaturada", "12.6g\n1.2g\n9.9g\n1.5g", "2.52g\n0.24g\n1.98g\n0.3g", "3.6%\n1.2%\n-\n-"], 
+	     ["Hidratos de carbono\n -Azúcares\n -Polialcoholes\n -Almidón","70.0g\n21.0g\n0.0g\n0.0g","14.0g\n4.2g\n0.0g\n0.0g", "5.38%\n4.67%\n-\n-"], 
+	     ["Fibra","7.5g","1.5g","-"], 
+	     ["Proteina","7.3g","1.46g","2.92%"], 
+	     ["Sal","0.003g","0.0006g","0.01%"]]
+		tabla = Terminal::Table.new :title => "Galletas integrales", :headings => ['', 'Cantidad por 100g', "Cantidad por porción (20g)", "IR (por porción de 20g de producto)"], :rows => filas
 		expect("#{@etiqueta.to_s}").to eq("#{tabla}")
 	  end
   end
