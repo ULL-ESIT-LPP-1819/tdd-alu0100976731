@@ -78,10 +78,20 @@ RSpec.describe Etiqueta do
   end
   context "# Métodos para mostrar por pantalla" do
 	  it "Espectativa para método to_s, tabla formateada" do
-		  filas = [["Valor energético","1834kJ/ 438kcal", "365kJ/ 87kcal"], ["Grasas totales\n -Saturadas\n -Monoinsaturada\n -Poliinsaturada", "12.6g\n1.2g\n9.9g\n1.5g", "2.52g\n0.24g\n1.98g\n0.3g"], ["Hidratos de carbono\n -Azúcares\n -Polialcoholes\n -Almidón","70.0g\n21.0g\n0.0g\n0.0g","14.0g\n4.2g\n0.0g\n0.0g"], ["Fibra","7.5g","1.5g"], ["Proteina","7.3g","1.46g"], ["Sal","0.003g","0.0006g"]]
+		  filas = [["Valor energético","1834kJ/ 438kcal", "365kJ/ 87kcal"], 
+	     ["Grasas totales\n -Saturadas\n -Monoinsaturada\n -Poliinsaturada", "12.6g\n1.2g\n9.9g\n1.5g", "2.52g\n0.24g\n1.98g\n0.3g"], 
+	     ["Hidratos de carbono\n -Azúcares\n -Polialcoholes\n -Almidón","70.0g\n21.0g\n0.0g\n0.0g","14.0g\n4.2g\n0.0g\n0.0g"], 
+	     ["Fibra","7.5g","1.5g"], 
+	     ["Proteina","7.3g","1.46g"], 
+	     ["Sal","0.003g","0.0006g"]]
 		tabla = Terminal::Table.new :title => "Galletas integrales", :headings => ['', 'Cantidad por 100g', "Cantidad por porción (20g)"], :rows => filas
 		expect("#{@etiqueta.to_s}").to eq("#{tabla}")
 	  end
+  end
+  context "# Ingesta recomendada (IR)" do
+	it "Método ingesta recomendada kcal" do
+		expect(@etiqueta.ir_kcal).to eq(4.38)
+	end		
   end
 end
 
