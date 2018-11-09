@@ -91,7 +91,10 @@ RSpec.describe Etiqueta do
   context "# Ingesta recomendada (IR)" do
 	it "Método ingesta recomendada kcal" do
 		expect(@etiqueta.ir_kcal).to eq(4.38)
-	end		
+	end
+	it "Método ingesta recomendad grasa" do
+		expect(@etiqueta.ir_grasa).to eq(3.6)
+	end	
   end
 end
 
