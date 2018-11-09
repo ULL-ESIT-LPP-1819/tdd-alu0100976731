@@ -97,6 +97,9 @@ RSpec.describe Etiqueta do
 	end
 	it "Método ingesta recomendada grasa saturada" do
 		expect(@etiqueta.ir_grasa_saturada).to eq(1.2)
+	end
+	it "Método ingesta recomendada de hidratos de carbono" do
+		expect(@etiqueta.ir_carbohidratos).to eq(5.38)
 	end	
   end
 end

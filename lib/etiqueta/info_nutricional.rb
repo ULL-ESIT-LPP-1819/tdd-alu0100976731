@@ -10,15 +10,19 @@ class InfoNutricional
 	end
 
 	def ir_kcal
-		valor_energetico.to_f*@porcion/2000
+		(valor_energetico.to_f*@porcion/2000).round(2)
 	end
 
 	def ir_grasa
-		@grasa.to_f*@porcion/70
+		(@grasa.to_f*@porcion/70).round(2)
 	end
 
 	def ir_grasa_saturada
-		@grasa_saturada.to_f*@porcion/20
+		(@grasa_saturada.to_f*@porcion/20).round(2)
+	end
+
+	def ir_carbohidratos
+		(@carbohidratos.to_f*@porcion/260).round(2)
 	end
 
 	def to_s
