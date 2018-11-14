@@ -1,9 +1,0 @@
-require 'spec_helper'
-
-RSpec::describe "Lista" do
-	context "# Métodos iniciales" do
-		it "Comprobando que existe un constructor" do
-			lista = Lista.new()
-		end
-	end
-end
