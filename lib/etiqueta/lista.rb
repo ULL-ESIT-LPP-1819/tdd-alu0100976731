@@ -17,4 +17,22 @@ class Lista
 			aux.prev = @head
 		end
 	end
+
+	def shift
+		if @head == nil
+			raise RuntimeError, "No se puede extraer porque la lista está vacía"
+		else
+			aux = @head.value
+			if @head == @tail
+				aux 
+				@head = nil
+				@tail = nil
+			else
+				aux = @head.value
+				@head = @head.next
+				@head.prev = nil
+			end
+			return aux
+		end
+	end
 end

@@ -29,7 +29,15 @@ RSpec::describe "Lista" do
 			@lista.push_front(@alimento3)
 			expect(@lista.head.value).to eq(@alimento3)
 			expect(@lista.head.next.value).to eq(@alimento2)
+			expect(@lista.head.next.next.value).to eq(@alimento1)
+			expect(@lista.head.next.prev.value).to eq(@alimento3)
 			expect(@lista.tail.value).to eq(@alimento1)
+			expect(@lista.tail.prev.value).to eq(@alimento2)
+		end
+		it "Existe un método que elimina un nodo de la lista por delante" do
+			expect(@lista.shift).to eq(@alimento3)
+			expect(@lista.head.value).to eq(@alimento2)
+			expect(@lista.head.prev).to be nil
 		end
 	end
 end
