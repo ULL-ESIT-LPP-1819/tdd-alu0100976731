@@ -1,8 +1,20 @@
 class InfoNutricional
 	attr_reader :nombre, :porcion, :grasa, :grasa_saturada, :grasa_monoinsaturada, :grasa_poliinsaturada, :carbohidratos, :azucar, :polialcoholes, :almidon, :fibra, :proteina, :sal
 	
-	def initialize(nombre, porcion, grasa, grasa_saturada, grasa_monoinsaturada, grasa_poliinsaturada, carbohidratos, azucar, polialcoholes, almidon, fibra, proteina, sal)
-		@nombre, @porcion, @grasa, @grasa_saturada, @grasa_monoinsaturada, @grasa_poliinsaturada, @carbohidratos, @azucar, @polialcoholes, @almidon, @fibra, @proteina, @sal = nombre, porcion, grasa, grasa_saturada, grasa_monoinsaturada, grasa_poliinsaturada, carbohidratos, azucar, polialcoholes, almidon, fibra, proteina, sal
+	def initialize(nombre, porcion, grasa, grasa_saturada, carbohidratos, azucar, proteina, sal, *otros)
+		@nombre = nombre
+		@porcion = porcion
+		@grasa = grasa
+		@grasa_saturada = grasa_saturada
+		@carbohidratos = carbohidratos
+		@azucar = azucar
+		@proteina = proteina
+		@sal = sal
+		@grasa_monoinsaturada = otros[0]
+		@grasa_poliinsaturada = otros[1]
+		@polialcoholes = otros[2]
+		@almidon = otros[3]
+		@fibra = otros[4]
 	end
 
 	def valor_energetico

@@ -10,12 +10,16 @@ RSpec.describe Etiqueta do
     expect(true).to eq(true)
   end
   before :each do
-                @etiqueta = InfoNutricional.new("Galletas integrales", 20, 12.6, 1.2, 9.9, 1.5, 70.0, 21.0, 0.0, 0.0, 7.5, 7.3, 0.003)
+                @etiqueta = InfoNutricional.new("Galletas integrales", 20, 12.6, 1.2, 70.0, 21.0, 7.3, 0.003, 9.9, 1.5, 0.0, 0.0, 7.5)
         end
   context "# Probando el constructor" do
-                it "Espectativa de que existe un constructor" do
-			prueba = InfoNutricional.new("Galletas integrales", 20, 12.6, 1.2, 9.9, 1.5, 70.0, 21.0, 0.0, 0.0, 7.5, 7.3, 0.003)
-                end
+        it "Espectativa de que existe un constructor" do
+			#prueba = InfoNutricional.new("Galletas integrales", 20, 12.6, 1.2, 9.9, 1.5, 70.0, 21.0, 0.0, 0.0, 7.5, 7.3, 0.003)
+			prueba = InfoNutricional.new("Galletas integrales", 20, 12.6, 1.2, 70.0, 21.0, 7.3, 0.003, 9.9, 1.5, 0.0, 0.0, 7.5)
+        end
+        it "Espectativa de que funciona el constructor con menos parámetros" do
+        	prueba2 = InfoNutricional.new("Leche entera", 250, 3.6, 2.5, 4.7, 4.7, 3.0, 0.13)
+        end
 		it "Espectativa de que los elementos existen" do
 			expect(@etiqueta.nombre).not_to be nil
 			expect(@etiqueta.porcion).not_to be nil
