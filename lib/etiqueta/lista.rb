@@ -20,7 +20,7 @@ class Lista
 
 	def shift
 		if @head == nil
-			raise RuntimeError, "No se puede extraer porque la lista está vacía"
+			raise RuntimeError, "No se puede extraer porque la lista está vacía."
 		else
 			aux = @head.value
 			if @head == @tail
