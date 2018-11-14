@@ -19,4 +19,17 @@ RSpec::describe "Lista" do
 			expect(@lista.tail).to be nil
 		end
 	end
+	context "# Utilidades de la lista" do
+		it "Existe un método que inserta un elemento por delante con la lista vacía" do
+			@lista.push_front(@alimento1)
+			expect(@lista.head.value).to eq(@alimento1)
+		end
+		it "Además, el método puede insertar un elemento por delante si la lista no está vacía" do
+			@lista.push_front(@alimento2)
+			@lista.push_front(@alimento3)
+			expect(@lista.head.value).to eq(@alimento3)
+			expect(@lista.head.next.value).to eq(@alimento2)
+			expect(@lista.tail.value).to eq(@alimento1)
+		end
+	end
 end
