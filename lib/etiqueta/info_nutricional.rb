@@ -50,10 +50,35 @@ class InfoNutricional
 	end
 
 	def to_s
+		if @grasa_monoinsaturada != nil
+			v_grasa_monoinsaturada = @grasa_monoinsaturada*@porcion/100
+		else
+			v_grasa_monoinsaturada = ""
+		end
+		if @grasa_poliinsaturada != nil
+			v_grasa_poliinsaturada = @grasa_poliinsaturada*@porcion/100
+		else
+			v_grasa_poliinsaturada = ""
+		end
+		if @almidon != nil
+			v_almidon = @almidon*@porcion/100
+		else
+			v_almidon = ""
+		end
+		if @polialcoholes != nil
+			v_polialcoholes = @polialcoholes*@porcion/100
+		else
+			v_polialcoholes = ""
+		end
+		if @fibra != nil
+			v_fibra = @fibra*@porcion/100
+		else
+			v_fibra = ""
+		end
 		filas = [["Valor energético","#{(valor_energetico*4.1868).round}kJ/ #{valor_energetico}kcal", "#{(valor_energetico*4.1686*@porcion/100).round}kJ/ #{(valor_energetico*@porcion/100).round}kcal","#{self.ir_kcal}%"], 
-	   ["Grasas totales\n -Saturadas\n -Monoinsaturada\n -Poliinsaturada", "#{@grasa}g\n#{@grasa_saturada}g\n#{@grasa_monoinsaturada}g\n#{@grasa_poliinsaturada}g", "#{@grasa*@porcion/100}g\n#{@grasa_saturada*@porcion/100}g\n#{@grasa_monoinsaturada*@porcion/100}g\n#{@grasa_poliinsaturada*@porcion/100}g", "#{self.ir_grasa}%\n#{self.ir_grasa_saturada}%\n-\n-"], 
-	   ["Hidratos de carbono\n -Azúcares\n -Polialcoholes\n -Almidón","#{@carbohidratos}g\n#{@azucar}g\n#{@polialcoholes}g\n#{@almidon}g","#{@carbohidratos*@porcion/100}g\n#{@azucar*@porcion/100}g\n#{@polialcoholes*@porcion/100}g\n#{@almidon*@porcion/100}g","#{self.ir_carbohidratos}%\n#{self.ir_azucar}%\n-\n-"], 
-	   ["Fibra","#{@fibra}g","#{@fibra*@porcion/100}g","-"], 
+	   ["Grasas totales\n -Saturadas\n -Monoinsaturada\n -Poliinsaturada", "#{@grasa}g\n#{@grasa_saturada}g\n#{@grasa_monoinsaturada}g\n#{@grasa_poliinsaturada}g", "#{@grasa*@porcion/100}g\n#{@grasa_saturada*@porcion/100}g\n#{v_grasa_monoinsaturada}g\n#{v_grasa_poliinsaturada}g", "#{self.ir_grasa}%\n#{self.ir_grasa_saturada}%\n-\n-"], 
+	   ["Hidratos de carbono\n -Azúcares\n -Polialcoholes\n -Almidón","#{@carbohidratos}g\n#{@azucar}g\n#{@polialcoholes}g\n#{@almidon}g","#{@carbohidratos*@porcion/100}g\n#{@azucar*@porcion/100}g\n#{v_polialcoholes}g\n#{v_almidon}g","#{self.ir_carbohidratos}%\n#{self.ir_azucar}%\n-\n-"], 
+	   ["Fibra","#{@fibra}g","#{v_fibra}g","-"], 
 	   ["Proteina","#{@proteina}g","#{@proteina*@porcion/100}g","#{self.ir_proteina}%"], 
 	   ["Sal","#{@sal}g","#{@sal*@porcion/100}g","#{self.ir_sal}%"]]
 tabla = Terminal::Table.new :title => "Galletas integrales", :headings => ['', 'Cantidad por 100g', "Cantidad por porción (20g)", "IR (por porción de #{@porcion}g de producto)"], :rows => filas

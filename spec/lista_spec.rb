@@ -72,7 +72,10 @@ RSpec::describe "Lista" do
 			@lista.push_back(@alimento2)
 			@lista.push_back(@alimento3)
 
-			expect(@lista.to_s).to eq("#{@alimento1.nombre} <-> #{@alimento2.nombre} <-> #{@alimento3.nombre}")
+			expect(@lista.to_s).to eq("#{@alimento1.to_s} <-> #{@alimento2.to_s} <-> #{@alimento3.to_s}")
+			@lista.pop
+			@lista.pop
+			expect(@lista.to_s).to eq("#{@alimento1.to_s}")
 		end
 	end
 end
