@@ -66,4 +66,13 @@ RSpec::describe "Lista" do
 			expect(@lista.tail).to be nil
 		end
 	end
+	context "# Mostrar por pantalla" do
+		it "El método to_s funciona correctamente" do
+			@lista.push_back(@alimento1)
+			@lista.push_back(@alimento2)
+			@lista.push_back(@alimento3)
+
+			expect(@lista.to_s).to eq("#{@alimento1.nombre} <-> #{@alimento2.nombre} <-> #{@alimento3.nombre}")
+		end
+	end
 end

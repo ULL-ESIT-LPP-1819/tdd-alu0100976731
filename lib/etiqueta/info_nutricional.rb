@@ -18,7 +18,7 @@ class InfoNutricional
 	end
 
 	def valor_energetico
-		(@grasa*9+@carbohidratos*4+@proteina*4+@fibra*2+@sal*6).round
+		(@grasa*9+@carbohidratos*4+@proteina*4+@sal*6).round
 	end
 
 	def ir_kcal

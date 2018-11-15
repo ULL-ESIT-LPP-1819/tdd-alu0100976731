@@ -63,4 +63,15 @@ class Lista
 			return aux
 		end
 	end
+
+	def to_s
+		i = @head
+		cadena = ""
+		while i!=nil && i!=@tail do
+			cadena += "#{i.value.nombre} <-> "
+			i = i.next
+		end
+		cadena += "#{i.value.nombre}"
+		cadena
+	end
 end

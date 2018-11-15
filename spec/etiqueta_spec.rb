@@ -69,12 +69,12 @@ RSpec.describe Etiqueta do
   end
   context "# Métodos adicionales" do
 	it "Espectativa para método valor_energetico" do
-		expect(@etiqueta.valor_energetico).to eq(438)
+		expect(@etiqueta.valor_energetico).to eq(423)
 	end
   end
   context "# Métodos para mostrar por pantalla" do
 	  it "Espectativa para método to_s, tabla formateada" do
-		  filas = [["Valor energético","1834kJ/ 438kcal", "365kJ/ 87kcal","4.38%"], 
+		  filas = [["Valor energético","1771kJ/ 423kcal", "353kJ/ 84kcal","4.23%"], 
 	     ["Grasas totales\n -Saturadas\n -Monoinsaturada\n -Poliinsaturada", "12.6g\n1.2g\n9.9g\n1.5g", "2.52g\n0.24g\n1.98g\n0.3g", "3.6%\n1.2%\n-\n-"], 
 	     ["Hidratos de carbono\n -Azúcares\n -Polialcoholes\n -Almidón","70.0g\n21.0g\n0.0g\n0.0g","14.0g\n4.2g\n0.0g\n0.0g", "5.38%\n4.67%\n-\n-"], 
 	     ["Fibra","7.5g","1.5g","-"], 
@@ -86,7 +86,7 @@ RSpec.describe Etiqueta do
   end
   context "# Ingesta recomendada (IR)" do
 	it "Método ingesta recomendada kcal" do
-		expect(@etiqueta.ir_kcal).to eq(4.38)
+		expect(@etiqueta.ir_kcal).to eq(4.23)
 	end
 	it "Método ingesta recomendada grasa" do
 		expect(@etiqueta.ir_grasa).to eq(3.6)
