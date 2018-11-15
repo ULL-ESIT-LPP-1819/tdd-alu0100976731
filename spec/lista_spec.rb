@@ -38,6 +38,32 @@ RSpec::describe "Lista" do
 			expect(@lista.shift).to eq(@alimento3)
 			expect(@lista.head.value).to eq(@alimento2)
 			expect(@lista.head.prev).to be nil
+			expect(@lista.shift).to eq(@alimento2)
+			expect(@lista.shift).to eq(@alimento1)
+			expect(@lista.head).to be nil
+			expect(@lista.tail).to be nil 
+		end
+		it "Existe un método que inserta un elemento por detrás" do
+			@lista.push_back(@alimento1)
+			expect(@lista.tail.value).to eq(@alimento1)
+			
+			@lista.push_back(@alimento2)
+			expect(@lista.tail.value).to eq(@alimento2)
+			expect(@lista.tail.prev.next.value).to eq(@alimento2)
+			expect(@lista.tail.prev.prev).to be nil
+
+			@lista.push_back(@alimento3)
+			expect(@lista.tail.value).to eq(@alimento3)
+		end
+		it "Existe un método que elimina un nodo de la lista por detrás" do
+			expect(@lista.pop).to eq(@alimento3)
+			expect(@lista.tail.value).to eq(@alimento2)
+			expect(@lista.tail.next).to be nil
+
+			expect(@lista.pop).to eq(@alimento2)
+			expect(@lista.pop).to eq(@alimento1)
+			expect(@lista.head).to be nil
+			expect(@lista.tail).to be nil
 		end
 	end
 end

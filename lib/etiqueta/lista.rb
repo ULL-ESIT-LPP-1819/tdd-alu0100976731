@@ -32,6 +32,34 @@ class Lista
 				@head = @head.next
 				@head.prev = nil
 			end
+				return aux
+		end
+	end
+
+	def push_back(nodo)
+		if @head == nil
+			@head = Node.new(nodo,nil,nil)
+			@tail = @head
+		else
+			aux = @tail
+			@tail = Node.new(nodo,nil,aux)
+			aux.next = @tail
+		end
+	end
+
+	def pop
+		if @head == nil
+			raise RuntimeError, "No se puede extraer porque la lista está vacía."
+		else
+			aux = @tail.value
+			if @head == @tail
+				@head = nil
+				@tail = nil
+			else
+				aux = @tail.value
+				@tail = @tail.prev
+				@tail.next = nil
+			end
 			return aux
 		end
 	end
