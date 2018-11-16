@@ -64,6 +64,16 @@ class Lista
 		end
 	end
 
+	def size
+		cont = 0
+		aux = @head
+		while aux != nil
+			cont+=1
+			aux = aux.next
+		end
+		cont
+	end
+
 	def to_s
 		i = @head
 		cadena = ""

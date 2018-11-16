@@ -78,4 +78,14 @@ RSpec::describe "Lista" do
 			expect(@lista.to_s).to eq("#{@alimento1.to_s}")
 		end
 	end
+	context "# Más utilidades" do
+		it "Devuelve el número de nodos" do
+			@lista.pop
+			expect(@lista.size).to eq(0)
+			@lista.push_back(@alimento1)
+			@lista.push_back(@alimento2)
+			@lista.push_back(@alimento3)
+			expect(@lista.size).to eq(3)
+		end
+	end
 end
