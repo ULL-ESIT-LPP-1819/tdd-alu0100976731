@@ -7,6 +7,7 @@ class Lista
 		@tail = nil
 	end
 
+	# Comprueba si la lista está vacía
 	def empty?
 		if @head == nil
 			return true
