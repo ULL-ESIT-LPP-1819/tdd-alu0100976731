@@ -105,10 +105,33 @@ RSpec::describe "Lista" do
 		it "Creando método que elimina el nodo de una posición dada" do
 			@lista.erase(0)
 			@lista.erase(4)
-			@lista.erase(2)
-			expect(@lista.to_s).to eq("#{@alimento1} <-> #{@alimento5} <-> #{@alimento3}")
+			@lista.erase(1)
+			expect(@lista.to_s).to eq("#{@alimento1} <-> #{@alimento2} <-> #{@alimento3}")
 			# 4 1 5 2 3 1
-			# 1 5 3 
+			# 0 1 2 3 4 5
+			# 1 2 3
+			@lista.push_back(@alimento4)
+			@lista.push_back(@alimento5)
+		end
+	end
+	context "Pruebas para clasificar según los gramos de sal" do
+		before :all do
+			@lista_mayor = Lista.new()
+			@lista_menor = Lista.new()
+		end
+		it "Se clasifica según la sal correctamente" do
+			aux = @lista.head
+			while aux!=nil
+				if aux.value.sal > 6
+					@lista_mayor.push_back(aux.value)
+					expect(aux.value).to eq(@alimento4)
+				else
+					@lista_menor.push_back(aux.value)
+				end
+				aux = aux.next
+			end
+			expect(@lista_mayor.size).to eq(1)
+			expect(@lista_menor.size).to eq(4)
 		end
 	end
 end
