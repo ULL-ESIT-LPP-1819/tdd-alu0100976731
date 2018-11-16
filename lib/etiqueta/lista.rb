@@ -7,6 +7,14 @@ class Lista
 		@tail = nil
 	end
 
+	def empty?
+		if @head == nil
+			return true
+		else
+			return false
+		end
+	end
+
 	# Inserta nodo por delante
 	def push_front(nodo)
 		if @head == nil
