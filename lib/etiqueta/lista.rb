@@ -110,11 +110,12 @@ class Lista
 	end
 
 	def erase(pos)
-		if pos == 0
+		case pos
+		when 0
 			shift
-		elsif pos == size-1
+		when size-1
 			pop
-		else
+		when 1..size-2
 			i = 0
 			aux = @head
 			while i != pos
@@ -123,6 +124,8 @@ class Lista
 			end
 			aux.prev.next = aux.next
 			aux.next.prev = aux.prev
+		else
+			raise RuntimeError, "La posición introducida es mayor que el tamaño de la lista"
 		end
 	end
 
