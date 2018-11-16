@@ -89,28 +89,24 @@ class Lista
 	end
 
 	def insert(pos, nodo)
-		if pos == 0
-			@head = Node.new(nodo,@head,nil)
-			@head.next.prev = @head
-		else
-			if(pos > size)
-				raise RuntimeError, "La posición introducida es mayor que el tamaño de la lista"
-			else
-				if pos == size
-					push_back(nodo)
-				else
-					i = 0
-					aux = @head
-					while i!=pos
-						aux = aux.next
-						i+=1
-					end
-					nuevo = Node.new(nodo,aux,aux.prev)
-					aux.prev.next = nuevo
-					aux.prev = nuevo
-				end
+		case pos
+		when 0
+			push_front(nodo)
+		when size
+			push_back(nodo)
+		when 1..size-1
+			i = 0
+			aux = @head
+			while i!=pos
+				aux = aux.next
+				i+=1
 			end
-		end 
+			nuevo = Node.new(nodo,aux,aux.prev)
+			aux.prev.next = nuevo
+			aux.prev = nuevo
+		else
+			raise RuntimeError, "La posición introducida es mayor que el tamaño de la lista"
+		end
 	end
 
 	def to_s

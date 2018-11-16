@@ -100,6 +100,7 @@ RSpec::describe "Lista" do
 			@lista.insert(2,@alimento5)
 			expect(@lista.get(2)).to eq(@alimento5)
 			@lista.insert(5,@alimento1)
+			expect(@lista.get(5)).to eq(@alimento1)
 		end
 	end
 end
