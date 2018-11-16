@@ -7,6 +7,7 @@ class Lista
 		@tail = nil
 	end
 
+	# Inserta nodo por delante
 	def push_front(nodo)
 		if @head == nil
 			@head = Node.new(nodo,nil,nil)
@@ -18,6 +19,7 @@ class Lista
 		end
 	end
 
+	# Elimina nodo por delante (devolviendo su valor)
 	def shift
 		if @head == nil
 			raise RuntimeError, "No se puede extraer porque la lista está vacía."
@@ -36,6 +38,7 @@ class Lista
 		end
 	end
 
+	# Inserta nodo por detrás
 	def push_back(nodo)
 		if @head == nil
 			@head = Node.new(nodo,nil,nil)
@@ -47,6 +50,7 @@ class Lista
 		end
 	end
 
+	# Elimina nodo por detrás (devolviendo su valor)
 	def pop
 		if @head == nil
 			raise RuntimeError, "No se puede extraer porque la lista está vacía."
@@ -64,6 +68,7 @@ class Lista
 		end
 	end
 
+	# Devuelve el tamaño de las lista
 	def size
 		cont = 0
 		aux = @head
@@ -74,6 +79,7 @@ class Lista
 		cont
 	end
 
+	# Devuelve el nodo de la posición dada
 	def get(pos)
 		if pos>=size
 			raise RuntimeError, "La posición introducida es mayor que el tamaño de la lista"
@@ -88,6 +94,7 @@ class Lista
 		end
 	end
 
+	# Inserta el nodo en la posición dada
 	def insert(pos, nodo)
 		case pos
 		when 0
@@ -109,6 +116,7 @@ class Lista
 		end
 	end
 
+	# Elimina el nodo en la posición dada
 	def erase(pos)
 		case pos
 		when 0
@@ -129,6 +137,7 @@ class Lista
 		end
 	end
 
+	# Método to_s: value1 <-> value2 <-> value3
 	def to_s
 		i = @head
 		cadena = ""
