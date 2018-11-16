@@ -109,6 +109,23 @@ class Lista
 		end
 	end
 
+	def erase(pos)
+		if pos == 0
+			shift
+		elsif pos == size-1
+			pop
+		else
+			i = 0
+			aux = @head
+			while i != pos
+				aux = aux.next
+				i+=1
+			end
+			aux.prev.next = aux.next
+			aux.next.prev = aux.prev
+		end
+	end
+
 	def to_s
 		i = @head
 		cadena = ""

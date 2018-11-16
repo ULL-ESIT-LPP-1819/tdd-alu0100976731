@@ -102,5 +102,13 @@ RSpec::describe "Lista" do
 			@lista.insert(5,@alimento1)
 			expect(@lista.get(5)).to eq(@alimento1)
 		end
+		it "Creando método que elimina el nodo de una posición dada" do
+			@lista.erase(0)
+			@lista.erase(4)
+			@lista.erase(2)
+			expect(@lista.to_s).to eq("#{@alimento1} <-> #{@alimento5} <-> #{@alimento3}")
+			# 4 1 5 2 3 1
+			# 1 5 3 
+		end
 	end
 end
