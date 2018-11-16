@@ -6,6 +6,8 @@ RSpec::describe "Lista" do
 		@alimento1 = InfoNutricional.new("Galletas integrales", 20, 12.6, 1.2, 70.0, 21.0, 7.3, 0.003, 9.9, 1.5, 0.0, 0.0, 7.5)
 		@alimento2 = InfoNutricional.new("Leche entera", 250, 3.6, 2.5, 4.7, 4.7, 3.0, 0.13)
 		@alimento3 = InfoNutricional.new("Oroweat 12 cereales y semillas", 20, 5.9, 0.8, 42, 5.5, 11.0, 0.98, 1.8, 3.3, 0.0, 36.0, 6.0)
+		@alimento4 = InfoNutricional.new("Anchoas", 50, 13, 1.8, 0.5, 0.5, 25, 14.3)
+		@alimento5 = InfoNutricional.new("Chocolate 85%", 20, 46.0, 28.0, 22.0, 15.0, 12.0, 0.02, 14.0, 1.6, nil, nil, 15)
 	end
 	context "# Métodos iniciales" do
 		it "Comprobando que existe una estructura Nodo" do
@@ -86,6 +88,18 @@ RSpec::describe "Lista" do
 			@lista.push_back(@alimento2)
 			@lista.push_back(@alimento3)
 			expect(@lista.size).to eq(3)
+		end
+		it "Creando método que devuelve el valor de la posición dada" do
+			expect(@lista.get(2)).to eq(@alimento3)
+			expect(@lista.get(1)).to eq(@alimento2)
+			expect(@lista.get(0)).to eq(@alimento1)
+		end
+		it "Creando método que inserta en una posición dada" do
+			@lista.insert(0,@alimento4)
+			expect(@lista.get(0)).to eq(@alimento4)
+			@lista.insert(2,@alimento5)
+			expect(@lista.get(2)).to eq(@alimento5)
+			@lista.insert(5,@alimento1)
 		end
 	end
 end
