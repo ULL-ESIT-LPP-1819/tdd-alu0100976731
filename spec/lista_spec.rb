@@ -67,6 +67,12 @@ RSpec::describe "Lista" do
 			expect(@lista.head).to be nil
 			expect(@lista.tail).to be nil
 		end
+		it "Método que comprueba si la lista está vacía" do
+			prueba = Lista.new()
+			expect(prueba.empty?).to eq(true)
+			prueba.push_back(@alimento1)
+			expect(prueba.empty?).to eq(false)
+		end
 	end
 	context "# Mostrar por pantalla" do
 		it "El método to_s funciona correctamente" do
