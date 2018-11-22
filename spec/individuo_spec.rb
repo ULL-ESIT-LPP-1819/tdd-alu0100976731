@@ -8,6 +8,9 @@ RSpec::describe Individuo do
         it 'El constructor funciona de forma adecuada' do
             prueba = Individuo.new('Juan Jesús', 'Padrón Hernández', 21, '22/08/1997','Hombre', 'Estudiante')
         end
+        it 'Pertenece a la misma jerarquía que Object' do
+            expect(@individuo1).to be_kind_of(Object)
+        end
         it 'Comprobando getters' do
             expect(@individuo1.nombre).to eq('Juan Jesús')
             expect(@individuo1.apellidos).to eq('Padrón Hernández')
