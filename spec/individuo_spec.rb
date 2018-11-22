@@ -27,11 +27,11 @@ end
 
 RSpec::describe IndividuoPaciente do
     before :each do
-        @individuo1 = IndividuoPaciente.new('Juan Jesús', 'Padrón Hernández', 21, '22/08/1997','Hombre', 'Estudiante', 85, 1.85, 90, 100)
+        @individuo1 = IndividuoPaciente.new('Juan Jesús', 'Padrón Hernández', 21, '22/08/1997','Hombre', 'Estudiante', 84.9, 1.85, 90, 100)
     end
     context 'Métodos iniciales' do
         it 'Existe un constructor' do
-            prueba = IndividuoPaciente.new('Juan Jesús', 'Padrón Hernández', 21, '22/08/1997','Hombre', 'Estudiante', 85, 1.85, 90, 100)
+            prueba = IndividuoPaciente.new('Juan Jesús', 'Padrón Hernández', 21, '22/08/1997','Hombre', 'Estudiante', 84.9, 1.85, 90, 100)
         end
         it 'Comprobando getters' do
             expect(@individuo1.nombre).to eq('Juan Jesús')
@@ -62,7 +62,7 @@ RSpec::describe IndividuoPaciente do
             expect(@individuo1.imc).to eq(24.81)
         end
         it 'Pordentaje de grasa' do
-            expect(@individuo1.p_grasa).to eq(18.4)
+            expect(@individuo1.p_grasa).to eq(18.40)
         end
     end
 end
