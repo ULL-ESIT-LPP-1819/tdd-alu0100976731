@@ -20,6 +20,15 @@ class IndividuoPaciente < Individuo
         @c_cintura = c_cintura
         @c_cadera = c_cadera
     end
+    def imc
+        (@peso/@talla**2).round(2)
+    end
+    def p_grasa
+        if @genero == 'Hombre'
+            1.2*imc+0.23*@edad-10.8*1-5.4).round(2)
+        else
+            1.2*imc+0.23*@edad-5.4).round(2)
+    end
 end
 #individuo1 = Individuo.new('Juan Jesús', 'Padrón Hernández', 21, '22/08/1997','Hombre', 'Estudiante')
 #puts individuo1

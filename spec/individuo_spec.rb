@@ -40,7 +40,7 @@ RSpec::describe IndividuoPaciente do
             expect(@individuo1.f_nacimiento).to eq('22/08/1997')
             expect(@individuo1.genero).to eq('Hombre')
             expect(@individuo1.ocupacion).to eq('Estudiante')
-            expect(@individuo1.peso).to eq(85)
+            expect(@individuo1.peso).to eq(84.9)
             expect(@individuo1.talla).to eq(1.85)
             expect(@individuo1.c_cintura).to eq(90)
             expect(@individuo1.c_cadera).to eq(100)
@@ -55,6 +55,14 @@ RSpec::describe IndividuoPaciente do
         end
         it 'Pertenece a la jerarquía de clase de Individuo' do
             expect(@individuo1).to be_kind_of(Individuo)
+        end
+    end
+    context 'Cálculo de datos antropométricos' do
+        it 'Método para calcular el IMC' do
+            expect(@individuo1.imc).to eq(24.81)
+        end
+        it 'Pordentaje de grasa' do
+            expect(@individuo1.p_grasa).to eq(18.4)
         end
     end
 end
