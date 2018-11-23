@@ -105,6 +105,7 @@ RSpec::describe IndividuoPaciente do
             obesidad2 = Lista.new()
             obesidad3 = Lista.new()
             while aux!=nil
+                expect(aux.value.respond_to?:imc).to be(true)
                 if aux.value.imc < 18.5
                     bajo_peso.push_back(@individuos.shift)
                     aux = @individuos.head
