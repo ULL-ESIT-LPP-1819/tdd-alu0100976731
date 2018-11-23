@@ -64,5 +64,8 @@ RSpec::describe IndividuoPaciente do
         it 'Pordentaje de grasa' do
             expect(@individuo1.p_grasa).to eq(18.40)
         end
+        it 'Relación Cadera-Cintura' do
+            expect(@individuo1.rcc).to eq(0.9)
+        end
     end
 end

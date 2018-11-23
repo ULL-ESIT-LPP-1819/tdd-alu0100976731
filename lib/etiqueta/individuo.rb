@@ -30,6 +30,9 @@ class IndividuoPaciente < Individuo
             (1.2*imc+0.23*@edad-5.4).round(2)
         end
     end
+    def rcc
+        (c_cintura.to_f/c_cadera).round(2)
+    end
 end
 #individuo1 = Individuo.new('Juan Jesús', 'Padrón Hernández', 21, '22/08/1997','Hombre', 'Estudiante')
 #puts individuo1
