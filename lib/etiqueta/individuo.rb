@@ -33,4 +33,9 @@ class IndividuoPaciente < Individuo
     def rcc
         (c_cintura.to_f/c_cadera).round(2)
     end
+    def to_s
+        super + "\n-Peso: #{@peso}\n-Talla: #{@talla}\n-Circ. Cintura: #{@c_cintura}\n-Circ. Cadera: #{@c_cadera}\n-IMC: #{imc}\n-RCC: #{rcc}"
+    end
+        
+
 end

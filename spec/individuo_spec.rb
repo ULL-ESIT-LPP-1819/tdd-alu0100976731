@@ -16,6 +16,9 @@ RSpec::describe Individuo do
             expect(@individuo1).to be_kind_of(Object)
             expect(@individuo1.is_a?Object).to be(true)
         end
+        it 'ICM no pertenece a su tipo' do
+            expect(@individuo1.respond_to?:imc).to be(false)
+        end
         it 'Comprobando getters' do
             expect(@individuo1.nombre).to eq('Juan Jesús')
             expect(@individuo1.apellidos).to eq('Padrón Hernández')
@@ -50,6 +53,9 @@ RSpec::describe IndividuoPaciente do
             expect(@individuo1.c_cintura).to eq(90)
             expect(@individuo1.c_cadera).to eq(100)
         end
+        it 'Comprobando método to_s' do
+            expect(@individuo1.to_s).to eq("INDIVIDUO\n-Nombre: Juan Jesús\n-Apellidos: Padrón Hernández\n-Edad: 21\n-Fecha de nacimiento: 22/08/1997\n-Género: Hombre\n-Ocupación: Estudiante\n-Peso: 84.9\n-Talla: 1.85\n-Circ. Cintura: 90\n-Circ. Cadera: 100\n-IMC: 24.81\n-RCC: 0.9")
+        end
     end
     context 'Comprobando clase, tipo y pertenencia a una jerarquía' do
         it 'El objeto es una instancia de IndividuoPaciente'  do
@@ -62,6 +68,9 @@ RSpec::describe IndividuoPaciente do
         it 'Pertenece a la jerarquía de clase de Individuo' do
             expect(@individuo1).to be_kind_of(Individuo)
             expect(@individuo1.is_a?Individuo).to be(true)
+        end
+        it 'Comprobaciones de tipo' do
+            expect(@individuo1.respond_to?:imc).to be(true)
         end
     end
     context 'Cálculo de datos antropométricos' do
