@@ -8,8 +8,13 @@ RSpec::describe Individuo do
         it 'El constructor funciona de forma adecuada' do
             prueba = Individuo.new('Juan Jesús', 'Padrón Hernández', 21, '22/08/1997','Hombre', 'Estudiante')
         end
+        it 'El objeto @individuo es una instancia de Individuo' do
+            expect(@individuo1).to be_instance_of(Individuo)
+            expect(@individuo1.instance_of?Individuo).to be(true)
+        end
         it 'Pertenece a la misma jerarquía que Object' do
             expect(@individuo1).to be_kind_of(Object)
+            expect(@individuo1.is_a?Object).to be(true)
         end
         it 'Comprobando getters' do
             expect(@individuo1.nombre).to eq('Juan Jesús')
@@ -49,12 +54,14 @@ RSpec::describe IndividuoPaciente do
     context 'Comprobando clase, tipo y pertenencia a una jerarquía' do
         it 'El objeto es una instancia de IndividuoPaciente'  do
             expect(@individuo1).to be_instance_of(IndividuoPaciente)
+            expect(@individuo1.instance_of?IndividuoPaciente).to be(true)
         end
         it 'El objeto es de la clase IndividuoPaciente'  do
             expect(@individuo1.class).to be(IndividuoPaciente)
         end
         it 'Pertenece a la jerarquía de clase de Individuo' do
             expect(@individuo1).to be_kind_of(Individuo)
+            expect(@individuo1.is_a?Individuo).to be(true)
         end
     end
     context 'Cálculo de datos antropométricos' do
