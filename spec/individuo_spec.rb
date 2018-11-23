@@ -68,4 +68,50 @@ RSpec::describe IndividuoPaciente do
             expect(@individuo1.rcc).to eq(0.9)
         end
     end
+    context 'Clasificación de lista' do
+        before :all do
+            @individuos = Lista.new()
+            @individuos.push_back(IndividuoPaciente.new('Juan Jesús', 'Padrón Hernández', 21, '22/08/1997','Hombre', 'Estudiante', 84.9, 1.85, 90, 100))
+            @individuos.push_back(IndividuoPaciente.new('Alicia', 'Hernández González', 20, '27/09/1998','Mujer', 'Estudiante', 62.8, 1.63, 69.6, 95.6))
+            @individuos.push_back(IndividuoPaciente.new('Charlie', 'Parker', 41, '29/08/1977','Hombre', 'Músico', 92.2, 1.75, 80.8, 96.8))
+            @individuos.push_back(IndividuoPaciente.new('Nina', 'Simon', 24, '21/02/1994','Mujer', 'Cantante', 52.4, 1.70, 67.2, 82.8))
+            @individuos.push_back(IndividuoPaciente.new('Kyle', 'Maclachlan', 59, '22/02/1959','Hombre', 'Actor', 98.5, 1.83, 77.2, 82.5))
+        end
+        it 'Clasificanco individuos' do
+            expect(@individuos).to be_instance_of(Lista)
+            expect(@individuos.instance_of?Lista).to be(true)
+            expect(@individuos).to be_kind_of(Object)
+            aux = @individuos.head
+            bajo_peso = Lista.new()
+            aceptable = Lista.new()
+            sobrepeso = Lista.new()
+            obesidad1 = Lista.new()
+            obesidad2 = Lista.new()
+            obesidad3 = Lista.new()
+            while aux!=nil
+                if aux.value.imc < 18.5
+                    bajo_peso.push_back(@individuos.shift)
+                    aux = @individuos.head
+                elsif aux.value.imc >= 18.5 && aux.value.imc <= 24.9
+                    aceptable.push_back(@individuos.shift)
+                    aux = @individuos.head
+                elsif aux.value.imc >= 30.0 && aux.value.imc <= 34.9
+                    obesidad1.push_back(@individuos.shift)
+                    aux = @individuos.head
+                elsif aux.value.imc >= 35.0 && aux.value.imc <= 39.9
+                    obesidad2.push_back(@individuos.shift)
+                    aux = @individuos.head
+                else
+                    obesidad3.push_back(@individuos.shift)
+                    aux = @individuos.head
+                end
+            end
+            expect(@individuos.empty?).to be(true)
+            expect(bajo_peso.size).to be(1)
+            expect(aceptable.size).to be(2)
+            expect(obesidad1.size).to be(1)
+            expect(obesidad2.size).to be(0)
+            expect(obesidad3.size).to be(1)
+        end
+    end
 end

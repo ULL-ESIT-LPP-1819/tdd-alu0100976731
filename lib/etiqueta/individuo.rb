@@ -34,6 +34,3 @@ class IndividuoPaciente < Individuo
         (c_cintura.to_f/c_cadera).round(2)
     end
 end
-#individuo1 = Individuo.new('Juan Jesús', 'Padrón Hernández', 21, '22/08/1997','Hombre', 'Estudiante')
-#puts individuo1
-#peso, talla, c_cintura, c_cadera
