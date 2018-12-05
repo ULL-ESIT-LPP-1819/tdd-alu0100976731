@@ -106,6 +106,11 @@ RSpec.describe Etiqueta do
         it "Método ingesta recomendada de sal" do
             expect(@etiqueta.ir_sal).to eq(0.01)
         end	
-    end
+	end
+	context "Pruebas comparable" do
+		it "Responde al método <=>" do
+			expect(@etiqueta.respond_to?:<=>).to eq(true)
+		end
+	end
 end
 

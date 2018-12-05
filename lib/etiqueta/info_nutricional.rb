@@ -1,4 +1,5 @@
 class InfoNutricional
+	include Comparable
 	attr_reader :nombre, :porcion, :grasa, :grasa_saturada, :grasa_monoinsaturada, :grasa_poliinsaturada, :carbohidratos, :azucar, :polialcoholes, :almidon, :fibra, :proteina, :sal
 	
 	def initialize(nombre, porcion, grasa, grasa_saturada, carbohidratos, azucar, proteina, sal, *otros)
@@ -84,4 +85,5 @@ class InfoNutricional
 tabla = Terminal::Table.new :title => "Galletas integrales", :headings => ['', 'Cantidad por 100g', "Cantidad por porción (20g)", "IR (por porción de #{@porcion}g de producto)"], :rows => filas
 	"#{tabla}"
 	end
+
 end
