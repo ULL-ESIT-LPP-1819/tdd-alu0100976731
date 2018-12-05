@@ -135,6 +135,14 @@ RSpec.describe Etiqueta do
 		it "between? funciona correctamente" do
 			expect(@etiqueta3.between?(@etiqueta2,@etiqueta)).to eq(true)
 		end
+		it "comprobando sort" do
+			expect([@etiqueta,@etiqueta2,@etiqueta3,@etiqueta4].sort).to eq([@etiqueta2,@etiqueta3,@etiqueta4,@etiqueta])
+		end
+		it "comprobando clamp" do
+			expect(@etiqueta2.clamp(@etiqueta3,@etiqueta4)).to eq(@etiqueta3)
+			expect(@etiqueta3.clamp(@etiqueta2,@etiqueta4)).to eq(@etiqueta3)
+			expect(@etiqueta.clamp(@etiqueta3,@etiqueta4)).to eq(@etiqueta4)
+		end
 	end
 end
 
