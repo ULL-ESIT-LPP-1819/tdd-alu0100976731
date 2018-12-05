@@ -85,5 +85,7 @@ class InfoNutricional
 tabla = Terminal::Table.new :title => "Galletas integrales", :headings => ['', 'Cantidad por 100g', "Cantidad por porción (20g)", "IR (por porción de #{@porcion}g de producto)"], :rows => filas
 	"#{tabla}"
 	end
-
+	def <=>(other)
+		valor_energetico <=> other.valor_energetico
+	end
 end

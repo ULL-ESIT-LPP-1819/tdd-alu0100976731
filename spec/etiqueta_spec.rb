@@ -8,7 +8,10 @@ RSpec.describe Etiqueta do
         expect(true).to eq(true)
     end
     before :each do
-        @etiqueta = InfoNutricional.new("Galletas integrales", 20, 12.6, 1.2, 70.0, 21.0, 7.3, 0.003, 9.9, 1.5, 0.0, 0.0, 7.5)
+		@etiqueta = InfoNutricional.new("Galletas integrales", 20, 12.6, 1.2, 70.0, 21.0, 7.3, 0.003, 9.9, 1.5, 0.0, 0.0, 7.5)
+		@etiqueta2 = InfoNutricional.new("Leche entera", 250, 3.6, 2.5, 4.7, 4.7, 3.0, 0.13)
+		@etiqueta3 = InfoNutricional.new("Oroweat 12 cereales y semillas", 20, 5.9, 0.8, 42, 5.5, 11.0, 0.98, 1.8, 3.3, 0.0, 36.0, 6.0)
+		@etiqueta4 = InfoNutricional.new("Anchoas", 50, 13, 1.8, 0.5, 0.5, 25, 14.3)
     end
     context "# Probando el constructor" do
         it "Espectativa de que existe un constructor" do
@@ -110,6 +113,27 @@ RSpec.describe Etiqueta do
 	context "Pruebas comparable" do
 		it "Responde al método <=>" do
 			expect(@etiqueta.respond_to?:<=>).to eq(true)
+		end
+		it "Se pueden comparar etiquetas nutricionales con <" do
+			expect(@etiqueta < @etiqueta2).to eq(false)
+		end
+		it "Se pueden comparar etiquetas nutricionales con >" do
+			expect(@etiqueta > @etiqueta2).to eq(true)
+		end
+		it "Se pueden comparar etiquetas nutricionales con <=" do
+			expect(@etiqueta <= @etiqueta2).to eq(false)
+			expect(@etiqueta <= @etiqueta).to eq(true)
+		end
+		it "Se pueden comparar etiquetas nutricionales con >=" do
+			expect(@etiqueta >= @etiqueta2).to eq(true)
+			expect(@etiqueta2 >= @etiqueta2).to eq(true)
+		end
+		it "Se pueden comparar etiquetas nutricionales con ==" do
+			expect(@etiqueta == @etiqueta).to eq(true)
+			expect(@etiqueta2 == @etiqueta2).to eq(true)
+		end
+		it "between? funciona correctamente" do
+			expect(@etiqueta3.between?(@etiqueta2,@etiqueta)).to eq(true)
 		end
 	end
 end
