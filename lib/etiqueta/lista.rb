@@ -1,6 +1,8 @@
+require 'terminal-table'
 Node = Struct.new(:value, :next, :prev)
 
 class Lista
+	include Enumerable
 	attr_reader :head, :tail
 	def initialize
 		@head = nil
@@ -157,4 +159,27 @@ class Lista
 		cadena += "#{i.value}"
 		cadena
 	end
+
+	def [](index)
+		if index>=size
+			raise RuntimeError, "La posición introducida es mayor que el tamaño de la lista"
+		else
+			i = 0
+			aux = @head
+			while i != index
+				aux = aux.next
+				i+=1
+			end
+			aux.value
+		end
+	end
+
+	def each
+		aux = @head
+		while aux != nil
+			yield aux.value
+			aux = aux.next
+		end
+	end
+
 end

@@ -140,4 +140,23 @@ RSpec::describe "Lista" do
 			expect(@lista_menor.size).to eq(4)
 		end
 	end
+	context "Pruebas Enumerable" do
+		before :all do
+			@lista = Lista.new()
+			@lista.push_back(InfoNutricional.new("Galletas integrales", 20, 12.6, 1.2, 70.0, 21.0, 7.3, 0.003, 9.9, 1.5, 0.0, 0.0, 7.5))
+			@lista.push_back(InfoNutricional.new("Leche entera", 250, 3.6, 2.5, 4.7, 4.7, 3.0, 0.13))
+			@lista.push_back(InfoNutricional.new("Oroweat 12 cereales y semillas", 20, 5.9, 0.8, 42, 5.5, 11.0, 0.98, 1.8, 3.3, 0.0, 36.0, 6.0))
+			@lista.push_back(InfoNutricional.new("Anchoas", 50, 13, 1.8, 0.5, 0.5, 25, 14.3))
+			@lista.push_back(InfoNutricional.new("Chocolate 85%", 20, 46.0, 28.0, 22.0, 15.0, 12.0, 0.02, 14.0, 1.6, nil, nil, 15))
+		end
+		it "Responde al operador each" do
+			expect(@lista.respond_to?:each).to eq(true)
+		end
+		it "El operador max funciona correctamente" do
+			expect(@lista.max).to eq(@lista[4])
+		end
+		it "El operador min funciona correctamente" do
+			expect(@lista.min).to eq(@lista[1])
+		end
+	end
 end
