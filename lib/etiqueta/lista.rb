@@ -1,15 +1,32 @@
 require 'terminal-table'
+
+# _Node_ es una clase que representa a un nodo con tres parámetros.
+# *value* representa el valor del nodo.
+# *next* el nodo siguiente.
+# *prev* el nodo anterior.
 Node = Struct.new(:value, :next, :prev)
 
+# La clase Lista impementa una lista doblemente enlazada DLL,
+# la cual contiene una serie de nodos con punteros al siguiente
+# y al anterior, para poder recorrerla en ambos sentidos.
+# Se ha hecho Enumberable.
+#
+# @author Juan Jesús Padrón Hernández  (mailto:alu0100976731@ull.edu.es)
 class Lista
 	include Enumerable
-	attr_reader :head, :tail
+	# Primer elemento de la lista.
+	attr_reader :head
+	# Último elemento de la lista.
+	attr_reader :tail
+
+	# Inicializa la lista con head y tail nulos.
 	def initialize
 		@head = nil
 		@tail = nil
 	end
 
-	# Comprueba si la lista está vacía
+	# Comprueba si la lista está vacía.
+	# @return [bool] *true* si la lista está vacía, *false* si contiene algún elemento
 	def empty?
 		if @head == nil
 			return true
@@ -18,7 +35,8 @@ class Lista
 		end
 	end
 
-	# Inserta nodo por delante
+	# Inserta nodo por delante.
+	# @param nodo [Node] Elemento que queremos insertar en la lista.
 	def push_front(nodo)
 		if @head == nil
 			@head = Node.new(nodo,nil,nil)
@@ -30,7 +48,9 @@ class Lista
 		end
 	end
 
-	# Elimina nodo por delante (devolviendo su valor)
+	# Elimina nodo por delante devolviendo su valor.
+	# Si la lista está vacía lanza una excepción _RuntimeError_.
+	# @return [Object] El valor que se ha eliminado de la lista.
 	def shift
 		if @head == nil
 			raise RuntimeError, "No se puede extraer porque la lista está vacía."
@@ -50,6 +70,7 @@ class Lista
 	end
 
 	# Inserta nodo por detrás
+	# @param (see #push_front)
 	def push_back(nodo)
 		if @head == nil
 			@head = Node.new(nodo,nil,nil)
@@ -61,7 +82,8 @@ class Lista
 		end
 	end
 
-	# Elimina nodo por detrás (devolviendo su valor)
+	# Elimina nodo por detrás devolviendo su valor
+	# @return (see #shift)
 	def pop
 		if @head == nil
 			raise RuntimeError, "No se puede extraer porque la lista está vacía."
@@ -79,7 +101,8 @@ class Lista
 		end
 	end
 
-	# Devuelve el tamaño de las lista
+	# Devuelve el tamaño de las lista.
+	# @return [Numeric] Cantidad de nodos en la lista.
 	def size
 		cont = 0
 		aux = @head
@@ -90,7 +113,9 @@ class Lista
 		cont
 	end
 
-	# Devuelve el nodo de la posición dada
+	# Devuelve el nodo de la posición dada.
+	# @param pos [Numeric] Posición del nodo que queremos obtener.
+	# @return [Object] Valor del nodo de la posición _pos_.
 	def get(pos)
 		if pos>=size
 			raise RuntimeError, "La posición introducida es mayor que el tamaño de la lista"
@@ -106,6 +131,8 @@ class Lista
 	end
 
 	# Inserta el nodo en la posición dada
+	# @param pos [Numeric] Posición en la que queremos insertar el nodo.
+	# @param nodo [Object] Elemento que queremos insertar.
 	def insert(pos, nodo)
 		case pos
 		when 0
@@ -127,7 +154,8 @@ class Lista
 		end
 	end
 
-	# Elimina el nodo en la posición dada
+	# Elimina el nodo en la posición dada.
+	# @param pos [Numeric] Posición del nodo que queremos eliminar.
 	def erase(pos)
 		case pos
 		when 0
@@ -148,7 +176,8 @@ class Lista
 		end
 	end
 
-	# Método to_s: value1 <-> value2 <-> value3
+	# Devuelve una cadena de la forma: value1 <-> value2 <-> value3
+	# @return [String] Cadena que representa la lista.
 	def to_s
 		i = @head
 		cadena = ""
@@ -160,6 +189,9 @@ class Lista
 		cadena
 	end
 
+	# Devuelve el nodo de la posición dada.
+	# @param index [Numeric] Posición del nodo que queremos obtener.
+	# @return [Object] Valor del nodo de la posición _index_.
 	def [](index)
 		if index>=size
 			raise RuntimeError, "La posición introducida es mayor que el tamaño de la lista"
@@ -174,6 +206,7 @@ class Lista
 		end
 	end
 
+	# Define la clase como Enumerable. Recorre la lista devolviendo cada nodo.
 	def each
 		aux = @head
 		while aux != nil
@@ -181,5 +214,4 @@ class Lista
 			aux = aux.next
 		end
 	end
-
 end
