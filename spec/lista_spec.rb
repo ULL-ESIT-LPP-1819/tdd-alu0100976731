@@ -158,5 +158,14 @@ RSpec::describe "Lista" do
 		it "El operador min funciona correctamente" do
 			expect(@lista.min).to eq(@lista[1])
 		end
+		it "El operador collect funciona correctamente" do
+			expect(@lista.collect{"Work!"}).to eq(["Work!","Work!","Work!","Work!","Work!"])
+		end
+		it "El operador select funciona correctamente" do
+			expect(@lista.select{|alimento| alimento.valor_energetico > 300}).to eq([@lista[0], @lista[3], @lista[4]])
+		end
+		it "El operador sort funciona correctamente" do
+			expect(@lista.sort).to eq([@lista[1], @lista[2], @lista[3], @lista[0], @lista[4]])
+		end
 	end
 end
