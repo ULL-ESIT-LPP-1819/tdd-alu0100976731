@@ -35,11 +35,11 @@ end
 
 RSpec::describe IndividuoPaciente do
     before :each do
-        @individuo1 = IndividuoPaciente.new('Juan Jesús', 'Padrón Hernández', 21, '22/08/1997','Hombre', 'Estudiante', 84.9, 1.85, 90, 100)
+        @individuo1 = IndividuoPaciente.new('Juan Jesús', 'Padrón Hernández', 21, '22/08/1997','Hombre', 'Estudiante', 1, 84.9, 1.85, 90, 100)
     end
     context 'Métodos iniciales' do
         it 'Existe un constructor' do
-            prueba = IndividuoPaciente.new('Juan Jesús', 'Padrón Hernández', 21, '22/08/1997','Hombre', 'Estudiante', 84.9, 1.85, 90, 100)
+            prueba = IndividuoPaciente.new('Juan Jesús', 'Padrón Hernández', 21, '22/08/1997','Hombre', 'Estudiante', 1, 84.9, 1.85, 90, 100)
         end
         it 'Comprobando getters' do
             expect(@individuo1.nombre).to eq('Juan Jesús')
@@ -48,13 +48,14 @@ RSpec::describe IndividuoPaciente do
             expect(@individuo1.f_nacimiento).to eq('22/08/1997')
             expect(@individuo1.genero).to eq('Hombre')
             expect(@individuo1.ocupacion).to eq('Estudiante')
+            expect(@individuo1.n_historia).to eq(1)
             expect(@individuo1.peso).to eq(84.9)
             expect(@individuo1.talla).to eq(1.85)
             expect(@individuo1.c_cintura).to eq(90)
             expect(@individuo1.c_cadera).to eq(100)
         end
         it 'Comprobando método to_s' do
-            expect(@individuo1.to_s).to eq("INDIVIDUO\n-Nombre: Juan Jesús\n-Apellidos: Padrón Hernández\n-Edad: 21\n-Fecha de nacimiento: 22/08/1997\n-Género: Hombre\n-Ocupación: Estudiante\n-Peso: 84.9\n-Talla: 1.85\n-Circ. Cintura: 90\n-Circ. Cadera: 100\n-IMC: 24.81\n-RCC: 0.9")
+            expect(@individuo1.to_s).to eq("INDIVIDUO\n-Nombre: Juan Jesús\n-Apellidos: Padrón Hernández\n-Edad: 21\n-Fecha de nacimiento: 22/08/1997\n-Género: Hombre\n-Ocupación: Estudiante\n-Nº Historia: 1\n-Peso: 84.9\n-Talla: 1.85\n-Circ. Cintura: 90\n-Circ. Cadera: 100\n-IMC: 24.81\n-RCC: 0.9")
         end
     end
     context 'Comprobando clase, tipo y pertenencia a una jerarquía' do
@@ -87,11 +88,11 @@ RSpec::describe IndividuoPaciente do
     context 'Clasificación de lista' do
         before :all do
             @individuos = Lista.new()
-            @individuos.push_back(IndividuoPaciente.new('Juan Jesús', 'Padrón Hernández', 21, '22/08/1997','Hombre', 'Estudiante', 84.9, 1.85, 90, 100))
-            @individuos.push_back(IndividuoPaciente.new('Alicia', 'Hernández González', 20, '27/09/1998','Mujer', 'Estudiante', 62.8, 1.63, 69.6, 95.6))
-            @individuos.push_back(IndividuoPaciente.new('Charlie', 'Parker', 41, '29/08/1977','Hombre', 'Músico', 92.2, 1.75, 80.8, 96.8))
-            @individuos.push_back(IndividuoPaciente.new('Nina', 'Simon', 24, '21/02/1994','Mujer', 'Cantante', 52.4, 1.70, 67.2, 82.8))
-            @individuos.push_back(IndividuoPaciente.new('Kyle', 'Maclachlan', 59, '22/02/1959','Hombre', 'Actor', 98.5, 1.83, 77.2, 82.5))
+            @individuos.push_back(IndividuoPaciente.new('Juan Jesús', 'Padrón Hernández', 21, '22/08/1997','Hombre', 'Estudiante', 1,84.9, 1.85, 90, 100))
+            @individuos.push_back(IndividuoPaciente.new('Alicia', 'Hernández González', 20, '27/09/1998','Mujer', 'Estudiante', 2, 62.8, 1.63, 69.6, 95.6))
+            @individuos.push_back(IndividuoPaciente.new('Charlie', 'Parker', 41, '29/08/1977','Hombre', 'Músico', 3, 92.2, 1.75, 80.8, 96.8))
+            @individuos.push_back(IndividuoPaciente.new('Nina', 'Simon', 24, '21/02/1994','Mujer', 'Cantante', 4, 52.4, 1.70, 67.2, 82.8))
+            @individuos.push_back(IndividuoPaciente.new('Kyle', 'Maclachlan', 59, '22/02/1959','Hombre', 'Actor', 5, 98.5, 1.83, 77.2, 82.5))
         end
         it 'Clasificanco individuos' do
             expect(@individuos).to be_instance_of(Lista)

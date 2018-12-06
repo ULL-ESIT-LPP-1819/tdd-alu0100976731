@@ -12,9 +12,10 @@ class Individuo
 end
 
 class IndividuoPaciente < Individuo
-    attr_reader :peso, :talla, :c_cintura, :c_cadera
-    def initialize(nombre, apellidos, edad, f_nacimiento, genero, ocupacion, peso, talla, c_cintura, c_cadera, *opcional)
+    attr_reader :n_historia, :peso, :talla, :c_cintura, :c_cadera
+    def initialize(nombre, apellidos, edad, f_nacimiento, genero, ocupacion, n_historia, peso, talla, c_cintura, c_cadera, *opcional)
         super(nombre, apellidos, edad, f_nacimiento, genero, ocupacion)
+        @n_historia = n_historia
         @peso = peso
         @talla = talla
         @c_cintura = c_cintura
@@ -34,7 +35,7 @@ class IndividuoPaciente < Individuo
         (c_cintura.to_f/c_cadera).round(2)
     end
     def to_s
-        super + "\n-Peso: #{@peso}\n-Talla: #{@talla}\n-Circ. Cintura: #{@c_cintura}\n-Circ. Cadera: #{@c_cadera}\n-IMC: #{imc}\n-RCC: #{rcc}"
+        super + "\n-Nº Historia: #{@n_historia}\n-Peso: #{@peso}\n-Talla: #{@talla}\n-Circ. Cintura: #{@c_cintura}\n-Circ. Cadera: #{@c_cadera}\n-IMC: #{imc}\n-RCC: #{rcc}"
     end
         
 
