@@ -140,7 +140,7 @@ RSpec::describe "Lista" do
 			expect(@lista_menor.size).to eq(4)
 		end
 	end
-	context "Pruebas Enumerable" do
+	context "Pruebas Enumerable con etiquetas nutricionales" do
 		before :all do
 			@lista = Lista.new()
 			@lista.push_back(InfoNutricional.new("Galletas integrales", 20, 12.6, 1.2, 70.0, 21.0, 7.3, 0.003, 9.9, 1.5, 0.0, 0.0, 7.5))
@@ -166,6 +166,31 @@ RSpec::describe "Lista" do
 		end
 		it "El operador sort funciona correctamente" do
 			expect(@lista.sort).to eq([@lista[1], @lista[2], @lista[3], @lista[0], @lista[4]])
+		end
+	end
+	context "Pruebas Enumerable con valoraciones nutricionales de individuos pacientes" do
+		before :all do
+			@individuos = Lista.new()
+      @individuos.push_back(IndividuoPaciente.new('Juan Jesús', 'Padrón Hernández', 21, '22/08/1997','Hombre', 'Estudiante', 1,84.9, 1.85, 90, 100))
+      @individuos.push_back(IndividuoPaciente.new('Alicia', 'Hernández González', 20, '27/09/1998','Mujer', 'Estudiante', 2, 62.8, 1.63, 69.6, 95.6))
+      @individuos.push_back(IndividuoPaciente.new('Charlie', 'Parker', 41, '29/08/1977','Hombre', 'Músico', 3, 92.2, 1.75, 80.8, 96.8))
+      @individuos.push_back(IndividuoPaciente.new('Nina', 'Simon', 24, '21/02/1994','Mujer', 'Cantante', 4, 52.4, 1.70, 67.2, 82.8))
+      @individuos.push_back(IndividuoPaciente.new('Kyle', 'Maclachlan', 59, '22/02/1959','Hombre', 'Actor', 5, 98.5, 1.83, 77.2, 82.5))
+		end
+		it "El operador max funciona correctamente" do
+			expect(@individuos.max).to eq(@individuos[2])
+		end
+		it "El operador min funciona correctamente" do
+			expect(@individuos.min).to eq(@individuos[3])
+		end
+		it "El operador collect funciona correctamente" do
+			expect(@individuos.collect{"Work!"}).to eq(["Work!","Work!","Work!","Work!","Work!"])
+		end
+		it "El operador select funciona correctamente" do
+			expect(@individuos.select{|individuo| individuo.imc < 25}).to eq([@individuos[0], @individuos[1], @individuos[3]])
+		end
+		it "El operador sort funciona correctamente" do
+			expect(@individuos.sort).to eq([@individuos[3], @individuos[1], @individuos[0], @individuos[4], @individuos[2]])
 		end
 	end
 end
