@@ -132,4 +132,47 @@ RSpec::describe IndividuoPaciente do
             expect(obesidad3.size).to be(1)
         end
     end
+    context "Pruebas comparable" do
+        before :all do
+            @individuo1 = IndividuoPaciente.new('Juan Jesús', 'Padrón Hernández', 21, '22/08/1997','Hombre', 'Estudiante', 1,84.9, 1.85, 90, 100)
+            @individuo2 = IndividuoPaciente.new('Alicia', 'Hernández González', 20, '27/09/1998','Mujer', 'Estudiante', 2, 62.8, 1.63, 69.6, 95.6)
+            @individuo3 = IndividuoPaciente.new('Charlie', 'Parker', 41, '29/08/1977','Hombre', 'Músico', 3, 92.2, 1.75, 80.8, 96.8)
+            @individuo4 = IndividuoPaciente.new('Nina', 'Simon', 24, '21/02/1994','Mujer', 'Cantante', 4, 52.4, 1.70, 67.2, 82.8)
+            @individuo5 = IndividuoPaciente.new('Kyle', 'Maclachlan', 59, '22/02/1959','Hombre', 'Actor', 5, 98.5, 1.83, 77.2, 82.5)
+        end
+		it "Responde al método <=>" do
+			expect(@etiqueta.respond_to?:<=>).to eq(true)
+		end
+		it "Se pueden comparar etiquetas nutricionales con <" do
+			expect(@individuo1 < @individuo2).to eq(false)
+		end
+		it "Se pueden comparar etiquetas nutricionales con >" do
+			expect(@individuo1 > @individuo2).to eq(true)
+		end
+		it "Se pueden comparar etiquetas nutricionales con <=" do
+			expect(@individuo1 <= @individuo2).to eq(false)
+			expect(@individuo1 <= @individuo1).to eq(true)
+		end
+		it "Se pueden comparar etiquetas nutricionales con >=" do
+			expect(@individuo1 >= @individuo2).to eq(true)
+			expect(@individuo2 >= @individuo2).to eq(true)
+		end
+		it "Se pueden comparar etiquetas nutricionales con ==" do
+			expect(@individuo1 == @individuo1).to eq(true)
+            expect(@individuo2 == @individuo2).to eq(true)
+            expect(@individuo1 == @individuo2).to eq(false)
+            expect(@individuo1 != @individuo2).to eq(true)
+		end
+		it "between? funciona correctamente" do
+			expect(@individuo5.between?(@individuo4,@individuo3)).to eq(true)
+		end
+		it "comprobando sort" do
+			expect([@individuo1,@individuo2,@individuo3,@individuo4,@individuo5].sort).to eq([@individuo4,@individuo2,@individuo1,@individuo5,@individuo3])
+		end
+		it "comprobando clamp" do
+			expect(@individuo4.clamp(@individuo1,@individuo5)).to eq(@individuo1)
+			expect(@individuo1.clamp(@individuo4,@individuo5)).to eq(@individuo1)
+			expect(@individuo3.clamp(@individuo4,@individuo5)).to eq(@individuo5)
+		end
+	end
 end
