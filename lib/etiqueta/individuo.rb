@@ -94,4 +94,14 @@ class IndividuoPaciente < Individuo
     def peso_teorico_ideal
         ((@talla*100-150)*0.75+50).round(2)
     end
+
+    # Calcula el gasto energético basal en kcal. Este depende del género del individuo.
+    # @return [Numeric] Gasto energético basal (kcal).
+    def gasto_energetico_basal
+        if genero == "Mujer"
+            ((10*@peso)+(6.25*@talla*100)-(5*@edad)-161).round(2)
+        else # genero == "Hombre"
+            ((10*@peso)+(6.25*@talla*100)-(5*@edad)+5).round(2)
+        end
+    end
 end

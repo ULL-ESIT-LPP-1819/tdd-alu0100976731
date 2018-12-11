@@ -178,12 +178,23 @@ RSpec::describe IndividuoPaciente do
     context "Pruebas para requerimientos nutricionales" do
         before :all do
             @individuo1 = IndividuoPaciente.new('Juan Jesús', 'Padrón Hernández', 21, '22/08/1997','Hombre', 'Estudiante', 1,84.9, 1.85, 90, 100)
+            @individuo2 = IndividuoPaciente.new('Alicia', 'Hernández González', 20, '27/09/1998','Mujer', 'Estudiante', 2, 62.8, 1.63, 69.6, 95.6)
         end
         it "Tiene un método para calcular el peso teórico ideal" do
             expect(@individuo1.respond_to?:peso_teorico_ideal).to eq(true)
         end
         it "El peso teórico ideal se calcula correctamente" do
             expect(@individuo1.peso_teorico_ideal).to eq(76.25)
+            expect(@individuo2.peso_teorico_ideal).to eq(59.75)
+        end
+        it "Tiene un método para calcular el peso teórico ideal" do
+            expect(@individuo1.respond_to?:gasto_energetico_basal).to eq(true)
+        end
+        it "Se calcula el gasto energético basal (mujeres)" do
+            expect((@individuo2).gasto_energetico_basal).to eq(1385.75)
+        end
+        it "Se calcula el gasto energético basal (hombres)" do
+            expect((@individuo1).gasto_energetico_basal).to eq(1905.25)
         end
     end
 end
