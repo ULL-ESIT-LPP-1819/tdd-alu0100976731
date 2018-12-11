@@ -107,11 +107,19 @@ class IndividuoPaciente < Individuo
     end
 
     # Calcula el gasto energético en kcal que se necesita para procesar los alimentos.
-    # @return [Numeric] Gasto enérgético por efecto termógeno (kcal).
+    # @return [Numeric] Gasto energético por efecto termógeno (kcal).
     def efecto_termogeno
         (gasto_energetico_basal*0.1).round(3)
     end
 
+    # Calcula el gasto energético en kcal por la actividad física del individuo.
+    # *Nivel de actividad*
+    # - 0: Reposo
+    # - 1: Actividad ligera
+    # - 2: Actividad moderada
+    # - 3: Actividad intensa
+    # @param grado_actividad [Numeric] Indica el nivel de actividad física del individuo.
+    # @return [Numeric] Gasto energético por actividad física (kcal).
     def gasto_actividad_fisica(grado_actividad)
         case grado_actividad
         when 0
@@ -125,5 +133,9 @@ class IndividuoPaciente < Individuo
         else
             0
         end
+    end
+
+    def gasto_energetico_total(grado_actividad)
+        (gasto_energetico_basal+efecto_termogeno+gasto_actividad_fisica(grado_actividad)).round(3)
     end
 end
