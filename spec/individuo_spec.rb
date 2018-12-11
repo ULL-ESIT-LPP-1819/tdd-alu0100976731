@@ -196,5 +196,15 @@ RSpec::describe IndividuoPaciente do
         it "Se calcula el gasto energético basal (hombres)" do
             expect((@individuo1).gasto_energetico_basal).to eq(1905.25)
         end
+        it "Tiene un método para calcular el efecto termógeno" do
+            expect((@individuo1).respond_to?:efecto_termogeno).to eq(true)
+        end
+        it "Se calcula el gasto enérgetico del efecto termógeno" do
+            expect(@individuo1.efecto_termogeno).to eq(190.525)
+            expect(@individuo2.efecto_termogeno).to eq(138.575)
+        end
+        it "Tiene un método para calcular el gasto por actividad física" do
+            expect(@individuo1.respond_to?:gasto_actividad_fisica).to eq(true)
+        end
     end
 end

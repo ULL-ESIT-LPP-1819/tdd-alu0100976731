@@ -98,10 +98,20 @@ class IndividuoPaciente < Individuo
     # Calcula el gasto energético basal en kcal. Este depende del género del individuo.
     # @return [Numeric] Gasto energético basal (kcal).
     def gasto_energetico_basal
+        comun = (10*@peso)+(6.25*@talla*100)-(5*@edad)
         if genero == "Mujer"
-            ((10*@peso)+(6.25*@talla*100)-(5*@edad)-161).round(2)
+            comun-161
         else # genero == "Hombre"
-            ((10*@peso)+(6.25*@talla*100)-(5*@edad)+5).round(2)
+            comun+5
         end
+    end
+
+    # Calcula el gasto energético en kcal que se necesita para procesar los alimentos.
+    # @return [Numeric] Gasto enérgético por efecto termógeno (kcal).
+    def efecto_termogeno
+        (gasto_energetico_basal*0.1).round(3)
+    end
+
+    def gasto_actividad_fisica
     end
 end
