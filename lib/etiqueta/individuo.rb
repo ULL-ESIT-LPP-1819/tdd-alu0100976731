@@ -112,6 +112,18 @@ class IndividuoPaciente < Individuo
         (gasto_energetico_basal*0.1).round(3)
     end
 
-    def gasto_actividad_fisica
+    def gasto_actividad_fisica(grado_actividad)
+        case grado_actividad
+        when 0
+            0
+        when 1
+            (gasto_energetico_basal*0.12).round(3)
+        when 2
+            (gasto_energetico_basal*0.27).round(3)
+        when 3
+            (gasto_energetico_basal*0.54).round(3)
+        else
+            0
+        end
     end
 end

@@ -206,5 +206,11 @@ RSpec::describe IndividuoPaciente do
         it "Tiene un método para calcular el gasto por actividad física" do
             expect(@individuo1.respond_to?:gasto_actividad_fisica).to eq(true)
         end
+        it "Cacula el gasto por actividad física correctamente" do
+            expect(@individuo1.gasto_actividad_fisica(0)).to eq(0)
+            expect(@individuo1.gasto_actividad_fisica(1)).to eq(228.63)
+            expect(@individuo1.gasto_actividad_fisica(2)).to eq(514.418)
+            expect(@individuo1.gasto_actividad_fisica(3)).to eq(1028.835)
+        end
     end
 end
