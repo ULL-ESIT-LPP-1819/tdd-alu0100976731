@@ -174,5 +174,16 @@ RSpec::describe IndividuoPaciente do
 			expect(@individuo1.clamp(@individuo4,@individuo5)).to eq(@individuo1)
 			expect(@individuo3.clamp(@individuo4,@individuo5)).to eq(@individuo5)
 		end
-	end
+    end
+    context "Pruebas para requerimientos nutricionales" do
+        before :all do
+            @individuo1 = IndividuoPaciente.new('Juan Jesús', 'Padrón Hernández', 21, '22/08/1997','Hombre', 'Estudiante', 1,84.9, 1.85, 90, 100)
+        end
+        it "Tiene un método para calcular el peso teórico ideal" do
+            expect(@individuo1.respond_to?:peso_teorico_ideal).to eq(true)
+        end
+        it "El peso teórico ideal se calcula correctamente" do
+            expect(@individuo1.peso_teorico_ideal).to eq(76.25)
+        end
+    end
 end

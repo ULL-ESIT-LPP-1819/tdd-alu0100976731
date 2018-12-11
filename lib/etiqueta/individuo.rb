@@ -88,4 +88,10 @@ class IndividuoPaciente < Individuo
     def <=>(other)
         imc <=> other.imc
     end
+
+    # Calcula el peso teorico ideal del individuo en kg.
+    # @return [Numeric] Peso teorico ideal (kg).
+    def peso_teorico_ideal
+        ((@talla*100-150)*0.75+50).round(2)
+    end
 end
