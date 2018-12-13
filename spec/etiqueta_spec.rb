@@ -73,6 +73,9 @@ RSpec.describe Etiqueta do
     context "# Métodos adicionales" do
 	    it "Espectativa para método valor_energetico" do
 		    expect(@etiqueta.valor_energetico).to eq(423)
+			end
+			it "Espectativa para método valor_energetico_porcion" do
+		    expect(@etiqueta.valor_energetico_porcion).to eq(84.6)
 	    end
     end
     context "# Métodos para mostrar por pantalla" do

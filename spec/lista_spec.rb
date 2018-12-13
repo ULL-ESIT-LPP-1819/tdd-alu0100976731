@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec::describe "Lista" do
+RSpec::describe Lista do
 	before :all do
 		@lista = Lista.new()
 		@alimento1 = InfoNutricional.new("Galletas integrales", 20, 12.6, 1.2, 70.0, 21.0, 7.3, 0.003, 9.9, 1.5, 0.0, 0.0, 7.5)

@@ -47,6 +47,7 @@ class IndividuoPaciente < Individuo
     # @param talla [Numeric] Su altura.
     # @param c_cintura [Numeric] Circunferencia de su cintura.
     # @param c_cadena [Numeric] Circunferencia de su cadera.
+    # @param grado_actividad [Numeric] Factor de actividad física.
     def initialize(nombre, apellidos, edad, f_nacimiento, genero, ocupacion, n_historia, peso, talla, c_cintura, c_cadera, grado_actividad,*opcional)
         super(nombre, apellidos, edad, f_nacimiento, genero, ocupacion)
         @n_historia = n_historia

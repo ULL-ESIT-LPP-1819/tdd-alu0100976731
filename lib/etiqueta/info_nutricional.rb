@@ -38,6 +38,12 @@ class InfoNutricional
 		(@grasa*9+@carbohidratos*4+@proteina*4+@sal*6).round
 	end
 
+	# Calcula el valor energético del alimento de la porción
+	# @return [Numeric] Cantidad de kcal que aporta la porción del alimento.
+	def valor_energetico_porcion
+		(valor_energetico.to_f.to_f*@porcion/100)
+	end
+
 	# Calcula el porcentaje de la ingesta recomendada de kcal que posee la porción indicada del alimento.
 	# @return [Numeric] Porcentaje de calorías de la ingesta diaria recomendada.
 	def ir_kcal
