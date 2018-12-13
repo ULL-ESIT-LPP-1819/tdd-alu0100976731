@@ -35,11 +35,11 @@ end
 
 RSpec::describe IndividuoPaciente do
     before :each do
-        @individuo1 = IndividuoPaciente.new('Juan Jesús', 'Padrón Hernández', 21, '22/08/1997','Hombre', 'Estudiante', 1, 84.9, 1.85, 90, 100)
+        @individuo1 = IndividuoPaciente.new('Juan Jesús', 'Padrón Hernández', 21, '22/08/1997','Hombre', 'Estudiante', 1, 84.9, 1.85, 90, 100, 0.27)
     end
     context 'Métodos iniciales' do
         it 'Existe un constructor' do
-            prueba = IndividuoPaciente.new('Juan Jesús', 'Padrón Hernández', 21, '22/08/1997','Hombre', 'Estudiante', 1, 84.9, 1.85, 90, 100)
+            prueba = IndividuoPaciente.new('Juan Jesús', 'Padrón Hernández', 21, '22/08/1997','Hombre', 'Estudiante', 1, 84.9, 1.85, 90, 100, 0.27)
         end
         it 'Comprobando getters' do
             expect(@individuo1.nombre).to eq('Juan Jesús')
@@ -53,9 +53,10 @@ RSpec::describe IndividuoPaciente do
             expect(@individuo1.talla).to eq(1.85)
             expect(@individuo1.c_cintura).to eq(90)
             expect(@individuo1.c_cadera).to eq(100)
+            expect(@individuo1.grado_actividad).to eq(0.27)
         end
         it 'Comprobando método to_s' do
-            expect(@individuo1.to_s).to eq("INDIVIDUO\n-Nombre: Juan Jesús\n-Apellidos: Padrón Hernández\n-Edad: 21\n-Fecha de nacimiento: 22/08/1997\n-Género: Hombre\n-Ocupación: Estudiante\n-Nº Historia: 1\n-Peso: 84.9\n-Talla: 1.85\n-Circ. Cintura: 90\n-Circ. Cadera: 100\n-IMC: 24.81\n-RCC: 0.9")
+            expect(@individuo1.to_s).to eq("INDIVIDUO\n-Nombre: Juan Jesús\n-Apellidos: Padrón Hernández\n-Edad: 21\n-Fecha de nacimiento: 22/08/1997\n-Género: Hombre\n-Ocupación: Estudiante\n-Nº Historia: 1\n-Factor actividad física: 0.27\n-Peso: 84.9\n-Talla: 1.85\n-Circ. Cintura: 90\n-Circ. Cadera: 100\n-IMC: 24.81\n-RCC: 0.9")
         end
     end
     context 'Comprobando clase, tipo y pertenencia a una jerarquía' do
@@ -88,11 +89,11 @@ RSpec::describe IndividuoPaciente do
     context 'Clasificación de lista' do
         before :all do
             @individuos = Lista.new()
-            @individuos.push_back(IndividuoPaciente.new('Juan Jesús', 'Padrón Hernández', 21, '22/08/1997','Hombre', 'Estudiante', 1,84.9, 1.85, 90, 100))
-            @individuos.push_back(IndividuoPaciente.new('Alicia', 'Hernández González', 20, '27/09/1998','Mujer', 'Estudiante', 2, 62.8, 1.63, 69.6, 95.6))
-            @individuos.push_back(IndividuoPaciente.new('Charlie', 'Parker', 41, '29/08/1977','Hombre', 'Músico', 3, 92.2, 1.75, 80.8, 96.8))
-            @individuos.push_back(IndividuoPaciente.new('Nina', 'Simon', 24, '21/02/1994','Mujer', 'Cantante', 4, 52.4, 1.70, 67.2, 82.8))
-            @individuos.push_back(IndividuoPaciente.new('Kyle', 'Maclachlan', 59, '22/02/1959','Hombre', 'Actor', 5, 98.5, 1.83, 77.2, 82.5))
+            @individuos.push_back(IndividuoPaciente.new('Juan Jesús', 'Padrón Hernández', 21, '22/08/1997','Hombre', 'Estudiante', 1,84.9, 1.85, 90, 100, 0.27))
+            @individuos.push_back(IndividuoPaciente.new('Alicia', 'Hernández González', 20, '27/09/1998','Mujer', 'Estudiante', 2, 62.8, 1.63, 69.6, 95.6, 0.12))
+            @individuos.push_back(IndividuoPaciente.new('Charlie', 'Parker', 41, '29/08/1977','Hombre', 'Músico', 3, 92.2, 1.75, 80.8, 96.8, 0))
+            @individuos.push_back(IndividuoPaciente.new('Nina', 'Simon', 24, '21/02/1994','Mujer', 'Cantante', 4, 52.4, 1.70, 67.2, 82.8, 0.27))
+            @individuos.push_back(IndividuoPaciente.new('Kyle', 'Maclachlan', 59, '22/02/1959','Hombre', 'Actor', 5, 98.5, 1.83, 77.2, 82.5, 0.54))
         end
         it 'Clasificanco individuos' do
             expect(@individuos).to be_instance_of(Lista)
@@ -134,11 +135,11 @@ RSpec::describe IndividuoPaciente do
     end
     context "Pruebas comparable" do
         before :all do
-            @individuo1 = IndividuoPaciente.new('Juan Jesús', 'Padrón Hernández', 21, '22/08/1997','Hombre', 'Estudiante', 1,84.9, 1.85, 90, 100)
-            @individuo2 = IndividuoPaciente.new('Alicia', 'Hernández González', 20, '27/09/1998','Mujer', 'Estudiante', 2, 62.8, 1.63, 69.6, 95.6)
-            @individuo3 = IndividuoPaciente.new('Charlie', 'Parker', 41, '29/08/1977','Hombre', 'Músico', 3, 92.2, 1.75, 80.8, 96.8)
-            @individuo4 = IndividuoPaciente.new('Nina', 'Simon', 24, '21/02/1994','Mujer', 'Cantante', 4, 52.4, 1.70, 67.2, 82.8)
-            @individuo5 = IndividuoPaciente.new('Kyle', 'Maclachlan', 59, '22/02/1959','Hombre', 'Actor', 5, 98.5, 1.83, 77.2, 82.5)
+            @individuo1 = IndividuoPaciente.new('Juan Jesús', 'Padrón Hernández', 21, '22/08/1997','Hombre', 'Estudiante', 1,84.9, 1.85, 90, 100, 0.27)
+            @individuo2 = IndividuoPaciente.new('Alicia', 'Hernández González', 20, '27/09/1998','Mujer', 'Estudiante', 2, 62.8, 1.63, 69.6, 95.6, 0.12)
+            @individuo3 = IndividuoPaciente.new('Charlie', 'Parker', 41, '29/08/1977','Hombre', 'Músico', 3, 92.2, 1.75, 80.8, 96.8, 0)
+            @individuo4 = IndividuoPaciente.new('Nina', 'Simon', 24, '21/02/1994','Mujer', 'Cantante', 4, 52.4, 1.70, 67.2, 82.8, 0.27)
+            @individuo5 = IndividuoPaciente.new('Kyle', 'Maclachlan', 59, '22/02/1959','Hombre', 'Actor', 5, 98.5, 1.83, 77.2, 82.5, 0.54)
         end
 		it "Responde al método <=>" do
 			expect(@etiqueta.respond_to?:<=>).to eq(true)
@@ -177,8 +178,8 @@ RSpec::describe IndividuoPaciente do
     end
     context "Pruebas para requerimientos nutricionales" do
         before :all do
-            @individuo1 = IndividuoPaciente.new('Juan Jesús', 'Padrón Hernández', 21, '22/08/1997','Hombre', 'Estudiante', 1,84.9, 1.85, 90, 100)
-            @individuo2 = IndividuoPaciente.new('Alicia', 'Hernández González', 20, '27/09/1998','Mujer', 'Estudiante', 2, 62.8, 1.63, 69.6, 95.6)
+            @individuo1 = IndividuoPaciente.new('Juan Jesús', 'Padrón Hernández', 21, '22/08/1997','Hombre', 'Estudiante', 1,84.9, 1.85, 90, 100, 0.27)
+            @individuo2 = IndividuoPaciente.new('Alicia', 'Hernández González', 20, '27/09/1998','Mujer', 'Estudiante', 2, 62.8, 1.63, 69.6, 95.6, 0.12)
         end
         it "Tiene un método para calcular el peso teórico ideal" do
             expect(@individuo1.respond_to?:peso_teorico_ideal).to eq(true)
@@ -207,17 +208,13 @@ RSpec::describe IndividuoPaciente do
             expect(@individuo1.respond_to?:gasto_actividad_fisica).to eq(true)
         end
         it "Cacula el gasto por actividad física correctamente" do
-            expect(@individuo1.gasto_actividad_fisica(0)).to eq(0)
-            expect(@individuo1.gasto_actividad_fisica(1)).to eq(228.63)
-            expect(@individuo1.gasto_actividad_fisica(2)).to eq(514.418)
-            expect(@individuo1.gasto_actividad_fisica(3)).to eq(1028.835)
+            expect(@individuo1.gasto_actividad_fisica).to eq(514.418)
         end
         it "Existe un método que calcua el gasto energético total" do
             expect(@individuo1.respond_to?:gasto_energetico_total).to eq(true)
         end
         it "Calcula el gasto energético total correctamente" do
-            expect(@individuo1.gasto_energetico_total(1)).to eq(2324.405)
-            expect(@individuo2.gasto_energetico_total(0)).to eq(1524.325)
+            expect(@individuo1.gasto_energetico_total).to eq(2610.193)
         end
     end
 end

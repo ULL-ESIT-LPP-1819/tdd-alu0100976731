@@ -33,7 +33,7 @@ end
 # @author Juan Jesús Padrón Hernández  (mailto:alu0100976731@ull.edu.es)
 class IndividuoPaciente < Individuo
     include Comparable
-    attr_reader :n_historia, :peso, :talla, :c_cintura, :c_cadera
+    attr_reader :n_historia, :peso, :talla, :c_cintura, :c_cadera, :grado_actividad
 
     # Inicializa el objeto con los parámetros indicados.
     # @param nombre [String] Nombre de la persona.
@@ -47,13 +47,14 @@ class IndividuoPaciente < Individuo
     # @param talla [Numeric] Su altura.
     # @param c_cintura [Numeric] Circunferencia de su cintura.
     # @param c_cadena [Numeric] Circunferencia de su cadera.
-    def initialize(nombre, apellidos, edad, f_nacimiento, genero, ocupacion, n_historia, peso, talla, c_cintura, c_cadera, *opcional)
+    def initialize(nombre, apellidos, edad, f_nacimiento, genero, ocupacion, n_historia, peso, talla, c_cintura, c_cadera, grado_actividad,*opcional)
         super(nombre, apellidos, edad, f_nacimiento, genero, ocupacion)
         @n_historia = n_historia
         @peso = peso
         @talla = talla
         @c_cintura = c_cintura
         @c_cadera = c_cadera
+        @grado_actividad = grado_actividad
     end
 
     # Calcula el Índice de Masa Corporal del paciente.
@@ -81,7 +82,7 @@ class IndividuoPaciente < Individuo
     # Representa la información del objeto IndividuoPaciente.
     # @return [String] Cadena con la representación de la información personal y medidas antropométricas.
     def to_s
-        super + "\n-Nº Historia: #{@n_historia}\n-Peso: #{@peso}\n-Talla: #{@talla}\n-Circ. Cintura: #{@c_cintura}\n-Circ. Cadera: #{@c_cadera}\n-IMC: #{imc}\n-RCC: #{rcc}"
+        super + "\n-Nº Historia: #{@n_historia}\n-Factor actividad física: #{@grado_actividad}\n-Peso: #{@peso}\n-Talla: #{@talla}\n-Circ. Cintura: #{@c_cintura}\n-Circ. Cadera: #{@c_cadera}\n-IMC: #{imc}\n-RCC: #{rcc}"
     end
 
     # Define la clase como Comparable. Compara los alimentos por su IMC.
@@ -115,27 +116,17 @@ class IndividuoPaciente < Individuo
     # Calcula el gasto energético en kcal por la actividad física del individuo.
     # *Nivel de actividad*
     # - 0: Reposo
-    # - 1: Actividad ligera
-    # - 2: Actividad moderada
-    # - 3: Actividad intensa
-    # @param grado_actividad [Numeric] Indica el nivel de actividad física del individuo.
+    # - 0.12: Actividad ligera
+    # - 0.27: Actividad moderada
+    # - 0.54: Actividad intensa
     # @return [Numeric] Gasto energético por actividad física (kcal).
-    def gasto_actividad_fisica(grado_actividad)
-        case grado_actividad
-        when 0
-            0
-        when 1
-            (gasto_energetico_basal*0.12).round(3)
-        when 2
-            (gasto_energetico_basal*0.27).round(3)
-        when 3
-            (gasto_energetico_basal*0.54).round(3)
-        else
-            0
-        end
+    def gasto_actividad_fisica
+        (gasto_energetico_basal*@grado_actividad).round(3)
     end
 
-    def gasto_energetico_total(grado_actividad)
-        (gasto_energetico_basal+efecto_termogeno+gasto_actividad_fisica(grado_actividad)).round(3)
+    # Calcula el gasto energético total en kcal del individuo paciente
+    # @return [Numeric] Gasto total energético total (kcal).
+    def gasto_energetico_total
+        (gasto_energetico_basal+efecto_termogeno+gasto_actividad_fisica.round(3))
     end
 end
