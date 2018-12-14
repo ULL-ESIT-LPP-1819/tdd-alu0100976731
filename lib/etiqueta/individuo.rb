@@ -128,6 +128,6 @@ class IndividuoPaciente < Individuo
     # Calcula el gasto energético total en kcal del individuo paciente
     # @return [Numeric] Gasto total energético total (kcal).
     def gasto_energetico_total
-        (gasto_energetico_basal+efecto_termogeno+gasto_actividad_fisica.round(3))
+        (gasto_energetico_basal+efecto_termogeno+gasto_actividad_fisica).round(3)
     end
 end
