@@ -165,15 +165,16 @@ RSpec::describe IndividuoPaciente do
             expect(@individuo1 != @individuo2).to eq(true)
 		end
 		it "between? funciona correctamente" do
-			expect(@individuo5.between?(@individuo4,@individuo3)).to eq(true)
+			expect(@individuo5.between?(@individuo4,@individuo3)).to eq(false)
 		end
-		it "comprobando sort" do
-			expect([@individuo1,@individuo2,@individuo3,@individuo4,@individuo5].sort).to eq([@individuo4,@individuo2,@individuo1,@individuo5,@individuo3])
+        it "comprobando sort" do
+            p [@individuo1,@individuo2,@individuo3,@individuo4,@individuo5].sort.collect{|x| x.nombre}
+			expect([@individuo1,@individuo2,@individuo3,@individuo4,@individuo5].sort).to eq([@individuo2,@individuo4,@individuo3,@individuo1,@individuo5])
 		end
 		it "comprobando clamp" do
 			expect(@individuo4.clamp(@individuo1,@individuo5)).to eq(@individuo1)
 			expect(@individuo1.clamp(@individuo4,@individuo5)).to eq(@individuo1)
-			expect(@individuo3.clamp(@individuo4,@individuo5)).to eq(@individuo5)
+			expect(@individuo3.clamp(@individuo4,@individuo5)).to eq(@individuo3)
 		end
     end
     context "Pruebas para requerimientos nutricionales" do

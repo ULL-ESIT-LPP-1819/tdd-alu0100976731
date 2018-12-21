@@ -86,9 +86,9 @@ class IndividuoPaciente < Individuo
         super + "\n-Nº Historia: #{@n_historia}\n-Factor actividad física: #{@grado_actividad}\n-Peso: #{@peso}\n-Talla: #{@talla}\n-Circ. Cintura: #{@c_cintura}\n-Circ. Cadera: #{@c_cadera}\n-IMC: #{imc}\n-RCC: #{rcc}"
     end
 
-    # Define la clase como Comparable. Compara los alimentos por su IMC.
+    # Define la clase como Comparable. Compara los individuos por su valor energético total.
     def <=>(other)
-        imc <=> other.imc
+        gasto_energetico_total <=> other.gasto_energetico_total
     end
 
     # Calcula el peso teorico ideal del individuo en kg.
