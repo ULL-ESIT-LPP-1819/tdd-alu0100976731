@@ -22,6 +22,10 @@ class Array
 		aux
 	end
 
+  def valor_energetico_each
+    self.collect{|x| x.valor_energetico}.reduce(:+)
+  end
+
 	def sort_each
 		aux = []
 		i = 0
@@ -29,13 +33,19 @@ class Array
 			if i!=0
 				j = 0
 				aux.each do |y|
-					if j == aux.size
-						aux.push(x)
-					elsif x<y
+					if j == aux.size-1
+						if x.valor_energetico_each <= y.valor_energetico_each
+							aux.insert(j,x)
+							break
+						else
+							aux.push(x)
+							break
+						end
+					elsif x.valor_energetico_each <= y.valor_energetico_each
 						aux.insert(j,x)
 						break
 					end
-					j +=1
+					j+=1
 				end
 			else
 				aux.push(x)

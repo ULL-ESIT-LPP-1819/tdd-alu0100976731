@@ -65,13 +65,23 @@ RSpec::describe "Ordenación" do
       @menu_dietetico8 = [@alimento2, @alimento1, @alimento7, @alimento7, @alimento8, @alimento8, @alimento12]
       @menu_dietetico9 = [@alimento1, @alimento9, @alimento10, @alimento2]
       @menu_dietetico0 = [@alimento2, @alimento11, @alimento12, @alimento7, @alimento5, @alimento10]
-      @menus = [@menu_dietetico0, @menu_dietetico1, @menu_dietetico2, @menu_dietetico3, @menu_dietetico4, @menu_dietetico5, @menu_dietetico6, @menu_dietetico7, @menu_dietetico8, @menu_dietetico9]
+      @menus = [@menu_dietetico1, @menu_dietetico0, @menu_dietetico2, @menu_dietetico3, @menu_dietetico4, @menu_dietetico5, @menu_dietetico6, @menu_dietetico7, @menu_dietetico8, @menu_dietetico9]
     end
     it "Pruebas sort_for" do
       # p @menus.collect{|x| x.collect{|x| x.valor_energetico}.reduce(:+)}
       # p @menus.collect{|x| x.collect{|x| x.valor_energetico}.reduce(:+)}.sort
       # p @menus.sort_for
       expect(@menus.sort_for).to eq([@menu_dietetico1, @menu_dietetico4, @menu_dietetico9, @menu_dietetico2, @menu_dietetico3, @menu_dietetico5, @menu_dietetico6, @menu_dietetico7, @menu_dietetico0, @menu_dietetico8])
+    end
+    it "Pruebas sort_each" do
+      #p @menus.collect{|x| x.collect{|x| x.valor_energetico}.reduce(:+)}
+      #p @menus.sort_each.collect{|x| x.collect{|x| x.valor_energetico}.reduce(:+)}
+      #p @menus.collect{|x| x.collect{|x| x.valor_energetico}.reduce(:+)}.sort
+
+      expect(@menus.sort_each).to eq([@menu_dietetico1, @menu_dietetico4, @menu_dietetico9, @menu_dietetico2, @menu_dietetico3, @menu_dietetico5, @menu_dietetico6, @menu_dietetico7, @menu_dietetico0, @menu_dietetico8])
+    end
+    it "Pruebas sort" do
+      expect(@menus.sort_by{|x| x.collect{|y| y.valor_energetico}.reduce(:+)}).to eq([@menu_dietetico1, @menu_dietetico4, @menu_dietetico9, @menu_dietetico2, @menu_dietetico3, @menu_dietetico5, @menu_dietetico6, @menu_dietetico7, @menu_dietetico0, @menu_dietetico8])
     end
   end
 end
