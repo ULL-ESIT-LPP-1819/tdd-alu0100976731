@@ -34,5 +34,11 @@ RSpec::describe "Ordenación" do
     it "El método sort_for funciona correctamente" do
       expect(@lista_individuos.sort_for).to eq([@individuo7, @individuo2, @individuo4, @individuo8, @individuo3, @individuo6, @individuo9, @individuo5, @individuo1, @individuo0])
     end
+    it "El método sort_each funciona correctamente" do
+      expect(@lista_individuos.sort_each).to eq([@individuo7, @individuo2, @individuo4, @individuo8, @individuo3, @individuo6, @individuo9, @individuo5, @individuo1, @individuo0])
+    end
+    it "El método sort funciona correctamente" do
+      expect(@lista_individuos.sort).to eq([@individuo7, @individuo2, @individuo4, @individuo8, @individuo3, @individuo6, @individuo9, @individuo5, @individuo1, @individuo0])
+    end
   end
 end
