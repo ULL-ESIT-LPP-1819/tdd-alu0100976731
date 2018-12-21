@@ -2,6 +2,7 @@ require "coveralls"
 Coveralls.wear!
 require "bundler/setup"
 require "etiqueta"
+require "benchmark"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
