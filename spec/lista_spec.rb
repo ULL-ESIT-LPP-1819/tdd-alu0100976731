@@ -178,10 +178,10 @@ RSpec::describe Lista do
       @individuos.push_back(IndividuoPaciente.new('Kyle', 'Maclachlan', 59, '22/02/1959','Hombre', 'Actor', 5, 98.5, 1.83, 77.2, 82.5, 0.54))
 		end
 		it "El operador max funciona correctamente" do
-			expect(@individuos.max).to eq(@individuos[2])
+			expect(@individuos.max).to eq(@individuos[4])
 		end
 		it "El operador min funciona correctamente" do
-			expect(@individuos.min).to eq(@individuos[3])
+			expect(@individuos.min).to eq(@individuos[1])
 		end
 		it "El operador collect funciona correctamente" do
 			expect(@individuos.collect{"Work!"}).to eq(["Work!","Work!","Work!","Work!","Work!"])
@@ -190,7 +190,7 @@ RSpec::describe Lista do
 			expect(@individuos.select{|individuo| individuo.imc < 25}).to eq([@individuos[0], @individuos[1], @individuos[3]])
 		end
 		it "El operador sort funciona correctamente" do
-			expect(@individuos.sort).to eq([@individuos[3], @individuos[1], @individuos[0], @individuos[4], @individuos[2]])
+			expect(@individuos.sort).to eq([@individuos[1], @individuos[3], @individuos[2], @individuos[0], @individuos[4]])
 		end
 	end
 end
